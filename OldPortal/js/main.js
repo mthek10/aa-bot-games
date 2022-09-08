@@ -65,7 +65,10 @@ function generateAccounts() {
     function(curClientData, index){
       document.getElementById("caseId"+index).innerText = curClientData.id.toString();
       document.getElementById("SSN"+index).innerText = curClientData.SSN.toString();
+      // setting value to show and innertext for reader
       document.getElementById("transDate"+index).value = curClientData.transactionDate;
+      document.getElementById("transDate"+index).innerText = curClientData.transactionDate;
+
       document.getElementById("transType"+index).value = curClientData.transactionType;
       document.getElementById("accountType"+index).value = curClientData.accountType;
       // set button id for easy viewing
@@ -77,6 +80,13 @@ function generateAccounts() {
 
 }
 
+function lookupIndexByID(id) {
+  for (i=0;i<_globalData.length;i++){
+    if (_globalData[i].id==id) {
+      return i;
+    }
+  }
+}
 
 /*BEGIN -  MODAL HANDLING FOR ACCOUNT DETAILS */
 
@@ -90,7 +100,8 @@ var btn = document.getElementById("myBtn");
 var span = document.getElementById("btnModalClose");
 
 function fillAndShowPopupModal(buttonName) {
-  let index = Number.parseInt(buttonName.replace("viewModal",""));
+  let index = lookupIndexByID(Number.parseInt(buttonName.replace("viewModal-","")));
+  console.log(index + "-" + buttonName);
   document.getElementById("modalCaseId").innerText = _globalData[index].id;
   document.getElementById("modalTransactionAmount").innerText = _globalData[index].transactionAmount;
   document.getElementById("modalFinancialAdvisor").innerText = _globalData[index].financialAdvisor;
