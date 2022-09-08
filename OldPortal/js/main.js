@@ -22,9 +22,9 @@ function genRandomTransactionType(){
   let rand = genRand(0,2,0);
   switch (rand) {
     case 0:
-      return "credit";
+      return "Credit";
     case 1:
-      return "debit";
+      return "Debit";
   }
 }
 
@@ -32,11 +32,11 @@ function genRandomAccountType(){
   let rand = genRand(0,3,0);
   switch (rand) {
     case 0:
-      return "checking";
+      return "Checking";
     case 1:
-      return "savings";
+      return "Savings";
     case 2:
-      return "loan"
+      return "Loan"
   }
 }
 
@@ -70,12 +70,17 @@ function generateAccounts() {
       document.getElementById("transDate"+index).value = curClientData.transactionDate;
       document.getElementById("transDate"+index).innerText = curClientData.transactionDate;
 
-      document.getElementById("transType"+index).value = curClientData.transactionType;
-      document.getElementById("transType"+index).innerText = curClientData.transactionType;
+      // document.getElementById("transType"+index).value = curClientData.transactionType;
+      // document.getElementById("transType"+index).innerText = curClientData.transactionType;
 
+      document.getElementById("transTypeText"+index).value = curClientData.transactionType;
+      document.getElementById("transTypeText"+index).innerText = curClientData.transactionType;
 
-      document.getElementById("accountType"+index).value = curClientData.accountType;
-      document.getElementById("accountType"+index).innerText = curClientData.accountType;
+      // document.getElementById("accountType"+index).value = curClientData.accountType;
+      // document.getElementById("accountType"+index).innerText = curClientData.accountType;
+
+      document.getElementById("accountTypeText"+index).value = curClientData.accountType;
+      document.getElementById("accountTypeText"+index).innerText = curClientData.accountType;
 
       // set button id for easy viewing
       document.getElementById("viewModal"+index).id = "viewModal-" + curClientData.id.toString();
