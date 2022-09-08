@@ -87,7 +87,19 @@ function generateAccounts() {
       console.log(index)
     });
   _globalData = clientData;
+
+  // remove some data for user to manually fill
+  removeData();
+
   return clientData;
+
+}
+
+function removeData(){
+  // remove 1 date
+  let randomIdx = genRand(0,10,0);
+  document.getElementById("transDate"+randomIdx).value = "";
+  document.getElementById("transDate"+randomIdx).innerText = "";
 
 }
 
