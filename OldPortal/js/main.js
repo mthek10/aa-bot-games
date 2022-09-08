@@ -97,9 +97,15 @@ function generateAccounts() {
 
 function removeData(){
   // remove 1 date
-  let randomIdx = genRand(0,10,0);
-  document.getElementById("transDate"+randomIdx).value = "";
-  document.getElementById("transDate"+randomIdx).innerText = "";
+  let randomIdx1 = genRand(0,10,0);
+  let randomIdx2 = genRand(0,10,0);
+  let randomIdx3 = genRand(0,10,0);
+  document.getElementById("transDate"+randomIdx1).value = "";
+  document.getElementById("transDate"+randomIdx1).innerText = "";
+  document.getElementById("transDate"+randomIdx2).value = "";
+  document.getElementById("transDate"+randomIdx2).innerText = "";
+  document.getElementById("transDate"+randomIdx3).value = "";
+  document.getElementById("transDate"+randomIdx3).innerText = "";
 
 }
 
