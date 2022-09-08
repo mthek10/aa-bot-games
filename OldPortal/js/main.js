@@ -65,12 +65,18 @@ function generateAccounts() {
     function(curClientData, index){
       document.getElementById("caseId"+index).innerText = curClientData.id.toString();
       document.getElementById("SSN"+index).innerText = curClientData.SSN.toString();
+
       // setting value to show and innertext for reader
       document.getElementById("transDate"+index).value = curClientData.transactionDate;
       document.getElementById("transDate"+index).innerText = curClientData.transactionDate;
 
       document.getElementById("transType"+index).value = curClientData.transactionType;
+      document.getElementById("transType"+index).innerText = curClientData.transactionType;
+
+
       document.getElementById("accountType"+index).value = curClientData.accountType;
+      document.getElementById("accountType"+index).innerText = curClientData.accountType;
+
       // set button id for easy viewing
       document.getElementById("viewModal"+index).id = "viewModal-" + curClientData.id.toString();
       console.log(index)
