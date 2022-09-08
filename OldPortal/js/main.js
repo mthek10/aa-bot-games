@@ -68,6 +68,8 @@ function generateAccounts() {
       document.getElementById("transDate"+index).value = curClientData.transactionDate;
       document.getElementById("transType"+index).value = curClientData.transactionType;
       document.getElementById("accountType"+index).value = curClientData.accountType;
+      // set button id for easy viewing
+      document.getElementById("viewModal"+index).id = "viewModal-" + curClientData.id.toString();
       console.log(index)
     });
   _globalData = clientData;
