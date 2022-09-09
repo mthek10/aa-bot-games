@@ -84,7 +84,6 @@ function generateAccounts() {
 
       // set button id for easy viewing
       document.getElementById("viewModal"+index).id = "viewModal-" + curClientData.id.toString();
-      console.log(index)
     });
   _globalData = clientData;
 
@@ -130,7 +129,6 @@ var span = document.getElementById("btnModalClose");
 
 function fillAndShowPopupModal(buttonName) {
   let index = lookupIndexByID(Number.parseInt(buttonName.replace("viewModal-","")));
-  console.log(index + "-" + buttonName);
   document.getElementById("modalCaseId").innerText = _globalData[index].id;
   document.getElementById("modalTransactionAmount").innerText = _globalData[index].transactionAmount;
   document.getElementById("modalFinancialAdvisor").innerText = _globalData[index].financialAdvisor;
@@ -155,3 +153,28 @@ window.onclick = function(event) {
 }
 
 /* END - MODAL HANDLING FOR ACCOUNT DETAILS */
+
+/* BEGIN - LOGIN PAGE HANDLING */
+var loginBtn = document.getElementById("loginBtn");
+var usernameField = document.getElementById('username');
+var passwordField = document.getElementById('password');
+loginBtn ? loginBtn.onclick = function (){
+
+  if (usernameField.value==="mark@pixiebrix.com" && passwordField.value === "aabotgames2022") {
+    location.href="/BotGames/OldPortal/index.html"
+  } else {
+    alert("Incorrect username and password combination. Please try again.");
+  }
+} : '';
+/* END - LOGIN PAGE HANDLING */
+
+/* BEGIN - View button handling */
+
+var viewMoreButtons = document.querySelectorAll("button[id*='viewModal']");
+// for (var elem in viewMoreButtons) {
+//   elem.onclick = fillAndShowPopupModal(this.id);
+// }
+
+viewMoreButtons.forEach(function(node){node.onclick = (elem => fillAndShowPopupModal(node.id))});
+
+/* END - View button handling */
