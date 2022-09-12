@@ -161,9 +161,10 @@ var passwordField = document.getElementById('password');
 loginBtn ? loginBtn.onclick = function (){
 
   if (usernameField.value==="mark@pixiebrix.com" && passwordField.value === "aabotgames2022") {
-    location.href="/BotGames/OldPortal/index.html"
+    location.href="/OldPortal/index.html"
   } else {
     alert("Incorrect username and password combination. Please try again.");
+
   }
 } : '';
 /* END - LOGIN PAGE HANDLING */

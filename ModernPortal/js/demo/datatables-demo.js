@@ -9,7 +9,7 @@ $(document).ready(function () {
 
 function loginValidation() {
   if (document.getElementById("loginInputEmail").value === ('mark@pixiebrix.com') && document.getElementById('loginInputPassword').value === ('aabotgames2022')) {
-    window.location = "tables.html"
+    window.location = "index.html"
   } else {
     alert("Incorrect username and/or password.");
   }
