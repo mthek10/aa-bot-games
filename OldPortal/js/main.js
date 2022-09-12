@@ -125,8 +125,13 @@ var span = document.getElementById("btnModalClose");
 function fillAndShowPopupModal(buttonName) {
   let index = lookupIndexByID(Number.parseInt(buttonName.replace("viewModal-","")));
   document.getElementById("modalCaseId").innerText = _globalData[index].id;
-  document.getElementById("modalTransactionAmount").innerText = _globalData[index].transactionAmount;
-  document.getElementById("modalFinancialAdvisor").innerText = _globalData[index].financialAdvisor;
+  document.getElementById("modalSSN").innerText = _globalData[index].SSN;
+  document.getElementById("modalTransDate").innerText = _globalData[index].transactionDate;
+  document.getElementById("modalTransType").innerText = _globalData[index].transactionType;
+  document.getElementById("modalAccountType").innerText = _globalData[index].accountType;
+  document.getElementById("modalTransAmount").innerText = _globalData[index].transactionAmount;
+  document.getElementById("modalFinAdvisor").innerText = _globalData[index].financialAdvisor;
+
   modal.style.display = "block";
 }
 
