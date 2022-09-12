@@ -1,9 +1,6 @@
 var _globalData;
 
-function runLoginScript() {
-  alert("LOGGING IN");
-  document.getElementById("transDate2").value = "2001-09-01"
-}
+
 
 function genRandomFinancialAdvisor(){
   let firstName =  ["Adam", "Alex", "Aaron", "Ben", "Carl", "Dan", "David", "Edward", "Fred", "Frank", "George", "Hal", "Hank", "Ike", "John", "Jack", "Joe", "Larry", "Monte", "Matthew", "Mark", "Nathan", "Otto", "Paul", "Peter", "Roger", "Roger", "Steve", "Thomas", "Tim", "Ty", "Victor", "Walter","Emily","Hannah","Madison","Ashley","Sarah","Alexis","Samantha","Jessica","Elizabeth","Taylor","Lauren","Alyssa","Kayla","Abigail","Brianna","Olivia","Emma"];
@@ -95,16 +92,14 @@ function generateAccounts() {
 }
 
 function removeData(){
-  // remove 1 date
+  // remove 3 financial advisors
   let randomIdx1 = genRand(0,10,0);
   let randomIdx2 = genRand(0,10,0);
   let randomIdx3 = genRand(0,10,0);
-  document.getElementById("transDate"+randomIdx1).value = "";
-  document.getElementById("transDate"+randomIdx1).innerText = "";
-  document.getElementById("transDate"+randomIdx2).value = "";
-  document.getElementById("transDate"+randomIdx2).innerText = "";
-  document.getElementById("transDate"+randomIdx3).value = "";
-  document.getElementById("transDate"+randomIdx3).innerText = "";
+  _globalData[randomIdx1].financialAdvisor="";
+  _globalData[randomIdx2].financialAdvisor="";
+  _globalData[randomIdx3].financialAdvisor="";
+  _globalData[randomIdx3].financialAdvisor="";
 
 }
 
