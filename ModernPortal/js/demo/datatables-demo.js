@@ -7,11 +7,16 @@ $(document).ready(function () {
   });
 
   $('#btn-submitEntries').on('click', function () {
-    const urlParams = new URLSearchParams(window.location.search);
-    alert('PUT INTO API CALL + ID:' + urlParams.get('submissionId'));
+    alert('PUT INTO API CALL + ID:' + getSubmissionIdURL());
+    submitTableDataToApi();
   });
 
 });
+
+function getSubmissionIdURL(){
+  const urlParams = new URLSearchParams(window.location.search);
+  return urlParams.get('submissionId');
+}
 
 function loginValidation() {
   if (document.getElementById("loginInputEmail").value === ('mark@pixiebrix.com') && document.getElementById('loginInputPassword').value === ('aabotgames2022')) {
@@ -20,4 +25,35 @@ function loginValidation() {
   } else {
     alert("Incorrect username and/or password.");
   }
+}
+
+function submitTableDataToApi(){
+  let userTableSubmission = [];
+  let userHTMLTable = $('#dataTable').DataTable().rows().data();
+
+  userHTMLTable.map(
+      function (elem) {
+        userTableSubmission.push(
+            {
+              "caseId":elem[0],
+              "SSN":elem[1],
+              "transDate":elem[2],
+              "transType":elem[3],
+              "accountType":elem[4],
+              "transactionAmount":elem[5],
+              "financialAdvisor":elem[6]
+            }
+        )
+      }
+  );
+
+
+  let userAPISubmission = {
+    "submissionId":getSubmissionIdURL(),
+    "submissions":userTableSubmission
+  }
+
+  console.log(userAPISubmission);
+  // TODO: instead of logging, need to send data to API
+  // TODO: handle result
 }
