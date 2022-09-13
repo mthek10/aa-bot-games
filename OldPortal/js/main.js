@@ -180,35 +180,35 @@ viewMoreButtons.forEach(function(node){node.onclick = (elem => fillAndShowPopupM
 
 /* BEGIN - Polling Test */
 
-document.querySelector("#pollTest").onclick = async function (){
-  alert('testing');
-
-  const poll = async function (fn, fnCondition, ms) {
-    let result = await fn();
-    console.log('fncondition result:')
-    console.log(fnCondition(result));
-    while (fnCondition(result)) {
-      await wait(ms);
-      result = await fn();
-    }
-    return result;
-  };
-
-  const wait = function (ms = 1000) {
-    return new Promise(resolve => {
-      setTimeout(resolve, ms);
-    });
-  };
-
-  let fetchReport = () => axios.get('https://jsonplaceholder.typicode.com/todos/1');
-  let validate = function (result) {
-    console.log('reult:');
-    console.log(result);
-    // TODO: Replace this with a polling search for SCORE!
-    return result.data.userId!=document.getElementById('searchQuery').value;
-  };
-  let response = await poll(fetchReport, validate, 3000);
-  alert('poll works!!! Found 1 in search bar');
-}
+// document.querySelector("#pollTest").onclick = async function (){
+//   alert('testing');
+//
+//   const poll = async function (fn, fnCondition, ms) {
+//     let result = await fn();
+//     console.log('fncondition result:')
+//     console.log(fnCondition(result));
+//     while (fnCondition(result)) {
+//       await wait(ms);
+//       result = await fn();
+//     }
+//     return result;
+//   };
+//
+//   const wait = function (ms = 1000) {
+//     return new Promise(resolve => {
+//       setTimeout(resolve, ms);
+//     });
+//   };
+//
+//   let fetchReport = () => axios.get('https://jsonplaceholder.typicode.com/todos/1');
+//   let validate = function (result) {
+//     console.log('reult:');
+//     console.log(result);
+//     // TODO: Replace this with a polling search for SCORE!
+//     return result.data.userId!=document.getElementById('searchQuery').value;
+//   };
+//   let response = await poll(fetchReport, validate, 3000);
+//   alert('poll works!!! Found 1 in search bar');
+// }
 
 /* END - Polling Test */
