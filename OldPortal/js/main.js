@@ -81,10 +81,11 @@ function generateAccounts() {
   //   });
   //
   axios.post('https://pixiebrix-demo-api.herokuapp.com/submissions/').then(
-      response => {console.log(response);
+      response => {
         console.log(response);
       }
   ).catch(error => {console.log(error)});
+  console.log('api call new:')
 
 //  _globalData = clientData;
 
