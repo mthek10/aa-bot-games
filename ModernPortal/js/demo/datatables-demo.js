@@ -54,6 +54,10 @@ function submitTableDataToApi(){
   }
 
   console.log(userAPISubmission);
+
+  // Send to API
+  axios.post('')
+
   // TODO: instead of logging, need to send data to API
   // TODO: handle result
 }

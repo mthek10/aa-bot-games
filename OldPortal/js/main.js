@@ -40,51 +40,60 @@ function genRandomDate() {
 }
 
 function generateAccounts() {
-  // GENERATE ACCOUNT DATA
-  let clientData = [];
-  for (let i = 0; i < 10; i++) {
-    clientData.push({
-      id: Math.floor(Math.random() * 100000),
-      SSN:Math.floor(Math.random() * 10).toString()+Math.floor(Math.random() * 10).toString()+Math.floor(Math.random() * 10).toString()+"-"+Math.floor(Math.random() * 10).toString()+Math.floor(Math.random() * 10).toString()+"-"+Math.floor(Math.random() * 10).toString()+Math.floor(Math.random() * 10).toString()+Math.floor(Math.random() * 10).toString()+Math.floor(Math.random() * 10).toString(),
-      transactionDate:genRandomDate(),
-      transactionType: genRandomTransactionType(),
-      accountType:genRandomAccountType(),
-      transactionAmount:"$"+genRand(1000,1000000,2),
-      financialAdvisor:genRandomFinancialAdvisor()
-    });
-  }
+  // // GENERATE ACCOUNT DATA
+  // let clientData = [];
+  // for (let i = 0; i < 10; i++) {
+  //   clientData.push({
+  //     id: Math.floor(Math.random() * 100000),
+  //     SSN:Math.floor(Math.random() * 10).toString()+Math.floor(Math.random() * 10).toString()+Math.floor(Math.random() * 10).toString()+"-"+Math.floor(Math.random() * 10).toString()+Math.floor(Math.random() * 10).toString()+"-"+Math.floor(Math.random() * 10).toString()+Math.floor(Math.random() * 10).toString()+Math.floor(Math.random() * 10).toString()+Math.floor(Math.random() * 10).toString(),
+  //     transactionDate:genRandomDate(),
+  //     transactionType: genRandomTransactionType(),
+  //     accountType:genRandomAccountType(),
+  //     transactionAmount:"$"+genRand(1000,1000000,2),
+  //     financialAdvisor:genRandomFinancialAdvisor()
+  //   });
+  // }
+  //
+  // // DISPLAY ACCOUNT DATA
+  // clientData.forEach(
+  //   function(curClientData, index){
+  //     document.getElementById("caseId"+index).innerText = curClientData.id.toString();
+  //     document.getElementById("SSN"+index).innerText = curClientData.SSN.toString();
+  //
+  //     // setting value to show and innertext for reader
+  //     document.getElementById("transDate"+index).value = curClientData.transactionDate;
+  //     document.getElementById("transDate"+index).innerText = curClientData.transactionDate;
+  //
+  //     // document.getElementById("transType"+index).value = curClientData.transactionType;
+  //     // document.getElementById("transType"+index).innerText = curClientData.transactionType;
+  //
+  //     document.getElementById("transTypeText"+index).value = curClientData.transactionType;
+  //     document.getElementById("transTypeText"+index).innerText = curClientData.transactionType;
+  //
+  //     // document.getElementById("accountType"+index).value = curClientData.accountType;
+  //     // document.getElementById("accountType"+index).innerText = curClientData.accountType;
+  //
+  //     document.getElementById("accountTypeText"+index).value = curClientData.accountType;
+  //     document.getElementById("accountTypeText"+index).innerText = curClientData.accountType;
+  //
+  //     // set button id for easy viewing
+  //     document.getElementById("viewModal"+index).id = "viewModal-" + curClientData.id.toString();
+  //   });
+  //
+  axios.post('https://pixiebrix-demo-api.herokuapp.com/submissions/').then(
+      response => {console.log(response);
+        console.log(response);
+      }
+  ).catch(error => {console.log(error)});
 
-  // DISPLAY ACCOUNT DATA
-  clientData.forEach(
-    function(curClientData, index){
-      document.getElementById("caseId"+index).innerText = curClientData.id.toString();
-      document.getElementById("SSN"+index).innerText = curClientData.SSN.toString();
-
-      // setting value to show and innertext for reader
-      document.getElementById("transDate"+index).value = curClientData.transactionDate;
-      document.getElementById("transDate"+index).innerText = curClientData.transactionDate;
-
-      // document.getElementById("transType"+index).value = curClientData.transactionType;
-      // document.getElementById("transType"+index).innerText = curClientData.transactionType;
-
-      document.getElementById("transTypeText"+index).value = curClientData.transactionType;
-      document.getElementById("transTypeText"+index).innerText = curClientData.transactionType;
-
-      // document.getElementById("accountType"+index).value = curClientData.accountType;
-      // document.getElementById("accountType"+index).innerText = curClientData.accountType;
-
-      document.getElementById("accountTypeText"+index).value = curClientData.accountType;
-      document.getElementById("accountTypeText"+index).innerText = curClientData.accountType;
-
-      // set button id for easy viewing
-      document.getElementById("viewModal"+index).id = "viewModal-" + curClientData.id.toString();
-    });
-  _globalData = clientData;
+//  _globalData = clientData;
 
   // remove some data for user to manually fill
-  removeData();
+ // removeData();
 
-  return clientData;
+ // return clientData;
+
+  return null;
 
 }
 
@@ -176,6 +185,18 @@ var viewMoreButtons = document.querySelectorAll("button[id*='viewModal']");
 viewMoreButtons.forEach(function(node){node.onclick = (elem => fillAndShowPopupModal(node.id))});
 
 /* END - View button handling */
+
+/* BEGIN - API CALL FOR DATA */
+var userIdAPI;
+axios.get('https://jsonplaceholder.typicode.com/todos/1').then(
+    response => {console.log(response);
+    userIdAPI=response.data.userId;
+    console.log(userIdAPI+ 'is the userId from the API');
+    }
+).catch(error => {console.log(error)});
+
+
+/* END - API CALL FOR DATA */
 
 
 /* BEGIN - Polling Test */
