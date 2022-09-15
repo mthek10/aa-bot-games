@@ -92,33 +92,6 @@ function generateAccounts() {
       }
   ).catch(error => {console.log(error)});
 
-  // // DISPLAY ACCOUNT DATA
-  // clientData.forEach(
-  //   function(curClientData, index){
-  //     document.getElementById("caseId"+index).innerText = curClientData.id.toString();
-  //     document.getElementById("SSN"+index).innerText = curClientData.SSN.toString();
-  //
-  //     // setting value to show and innertext for reader
-  //     document.getElementById("transDate"+index).value = curClientData.transactionDate;
-  //     document.getElementById("transDate"+index).innerText = curClientData.transactionDate;
-  //
-  //     // document.getElementById("transType"+index).value = curClientData.transactionType;
-  //     // document.getElementById("transType"+index).innerText = curClientData.transactionType;
-  //
-  //     document.getElementById("transTypeText"+index).value = curClientData.transactionType;
-  //     document.getElementById("transTypeText"+index).innerText = curClientData.transactionType;
-  //
-  //     // document.getElementById("accountType"+index).value = curClientData.accountType;
-  //     // document.getElementById("accountType"+index).innerText = curClientData.accountType;
-  //
-  //     document.getElementById("accountTypeText"+index).value = curClientData.accountType;
-  //     document.getElementById("accountTypeText"+index).innerText = curClientData.accountType;
-  //
-  //     // set button id for easy viewing
-  //     document.getElementById("viewModal"+index).id = "viewModal-" + curClientData.id.toString();
-  //   });
-  //
-
   axios.get('https://pixiebrix-demo-api.herokuapp.com/submissions/20').then(
       response => {
         console.log(response);
@@ -233,35 +206,35 @@ axios.get('https://jsonplaceholder.typicode.com/todos/1').then(
 
 /* BEGIN - Polling Test */
 
-// document.querySelector("#pollTest").onclick = async function (){
-//   alert('testing');
-//
-//   const poll = async function (fn, fnCondition, ms) {
-//     let result = await fn();
-//     console.log('fncondition result:')
-//     console.log(fnCondition(result));
-//     while (fnCondition(result)) {
-//       await wait(ms);
-//       result = await fn();
-//     }
-//     return result;
-//   };
-//
-//   const wait = function (ms = 1000) {
-//     return new Promise(resolve => {
-//       setTimeout(resolve, ms);
-//     });
-//   };
-//
-//   let fetchReport = () => axios.get('https://jsonplaceholder.typicode.com/todos/1');
-//   let validate = function (result) {
-//     console.log('reult:');
-//     console.log(result);
-//     // TODO: Replace this with a polling search for SCORE!
-//     return result.data.userId!=document.getElementById('searchQuery').value;
-//   };
-//   let response = await poll(fetchReport, validate, 3000);
-//   alert('poll works!!! Found 1 in search bar');
-// }
+document.querySelector("#pollTest").onclick = async function (){
+  alert('testing');
+
+  const poll = async function (fn, fnCondition, ms) {
+    let result = await fn();
+    console.log('fncondition result:')
+    console.log(fnCondition(result));
+    while (fnCondition(result)) {
+      await wait(ms);
+      result = await fn();
+    }
+    return result;
+  };
+
+  const wait = function (ms = 1000) {
+    return new Promise(resolve => {
+      setTimeout(resolve, ms);
+    });
+  };
+
+  let fetchReport = () => axios.get('https://pixiebrix-demo-api.herokuapp.com/submissions/'+document.getElementById("submissionId").innerText);
+  let validate = function (result) {
+    console.log('result:');
+    console.log(result);
+    // TODO: Replace this with a polling search for SCORE!
+    return result.data.score==null;
+  };
+  let response = await poll(fetchReport, validate, 3000);
+  alert('poll works!!! Score: ' + response.data.score);
+}
 
 /* END - Polling Test */
