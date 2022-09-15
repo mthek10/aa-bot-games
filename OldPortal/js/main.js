@@ -54,6 +54,44 @@ function generateAccounts() {
   //   });
   // }
   //
+
+  axios.post('https://pixiebrix-demo-api.herokuapp.com/submissions/').then(
+      response => {
+        console.log(response);
+        let clientData = response.data.cases;
+        _globalData = response.data.cases;
+        // DISPLAY ACCOUNT DATA
+        clientData.forEach(
+          function(curClientData, index){
+            document.getElementById("caseId"+index).innerText = curClientData.id.toString();
+            document.getElementById("SSN"+index).innerText = curClientData.customer_ssn.toString();
+
+            // setting value to show and innertext for reader
+            document.getElementById("transDate"+index).value = curClientData.transaction_date;
+            document.getElementById("transDate"+index).innerText = curClientData.transaction_date;
+
+            // document.getElementById("transType"+index).value = curClientData.transactionType;
+            // document.getElementById("transType"+index).innerText = curClientData.transactionType;
+
+            document.getElementById("transTypeText"+index).value = curClientData.transaction_type;
+            document.getElementById("transTypeText"+index).innerText = curClientData.transaction_type;
+
+            // document.getElementById("accountType"+index).value = curClientData.accountType;
+            // document.getElementById("accountType"+index).innerText = curClientData.accountType;
+
+            document.getElementById("accountTypeText"+index).value = curClientData.account_type;
+            document.getElementById("accountTypeText"+index).innerText = curClientData.account_type;
+
+            // set button id for easy viewing
+            document.getElementById("viewModal"+index).id = "viewModal-" + curClientData.id.toString();
+
+          });
+
+          document.getElementById('submissionId').innerText = response.data.id;
+
+      }
+  ).catch(error => {console.log(error)});
+
   // // DISPLAY ACCOUNT DATA
   // clientData.forEach(
   //   function(curClientData, index){
@@ -80,19 +118,12 @@ function generateAccounts() {
   //     document.getElementById("viewModal"+index).id = "viewModal-" + curClientData.id.toString();
   //   });
   //
-  axios.post('https://pixiebrix-demo-api.herokuapp.com/submissions/').then(
+
+  axios.get('https://pixiebrix-demo-api.herokuapp.com/submissions/20').then(
       response => {
         console.log(response);
       }
   ).catch(error => {console.log(error)});
-  console.log('api call new:')
-
-//  _globalData = clientData;
-
-  // remove some data for user to manually fill
- // removeData();
-
- // return clientData;
 
   return null;
 
@@ -132,12 +163,12 @@ var span = document.getElementById("btnModalClose");
 function fillAndShowPopupModal(buttonName) {
   let index = lookupIndexByID(Number.parseInt(buttonName.replace("viewModal-","")));
   document.getElementById("modalCaseId").innerText = _globalData[index].id;
-  document.getElementById("modalSSN").innerText = _globalData[index].SSN;
-  document.getElementById("modalTransDate").innerText = _globalData[index].transactionDate;
-  document.getElementById("modalTransType").innerText = _globalData[index].transactionType;
-  document.getElementById("modalAccountType").innerText = _globalData[index].accountType;
-  document.getElementById("modalTransAmount").innerText = _globalData[index].transactionAmount;
-  document.getElementById("modalFinAdvisor").innerText = _globalData[index].financialAdvisor;
+  document.getElementById("modalSSN").innerText = _globalData[index].customer_ssn;
+  document.getElementById("modalTransDate").innerText = _globalData[index].transaction_date;
+  document.getElementById("modalTransType").innerText = _globalData[index].transaction_type;
+  document.getElementById("modalAccountType").innerText = _globalData[index].account_type;
+  document.getElementById("modalTransAmount").innerText = _globalData[index].transaction_amount;
+  document.getElementById("modalFinAdvisor").innerText = _globalData[index].financial_advisor;
 
   modal.style.display = "block";
 }
