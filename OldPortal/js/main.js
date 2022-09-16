@@ -87,7 +87,7 @@ function generateAccounts() {
 
           document.getElementById('submissionId').innerText = response.data.id;
 
-        alert('starting polling');
+
 
         const poll = async function (fn, fnCondition, ms) {
           let result = await fn();
@@ -110,14 +110,13 @@ function generateAccounts() {
           return result.data.score==null;
         };
         let response1 = await poll(fetchReport, validate, 5000);
-        alert('poll works!!! Score: ' + response1.data.score);
+        alert('Score: ' + response1.data.score + '/10');
 
 
 
       }
   ).catch(error => {console.log(error)});
 
-  alert('finished generating accounts')
 
   return null;
 
