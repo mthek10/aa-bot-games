@@ -57,7 +57,6 @@ function generateAccounts() {
 
   axios.post('https://pixiebrix-demo-api.herokuapp.com/submissions/').then(
       response => {
-        console.log(response);
         let clientData = response.data.cases;
         _globalData = response.data.cases;
         // DISPLAY ACCOUNT DATA
@@ -92,11 +91,7 @@ function generateAccounts() {
       }
   ).catch(error => {console.log(error)});
 
-  axios.get('https://pixiebrix-demo-api.herokuapp.com/submissions/20').then(
-      response => {
-        console.log(response);
-      }
-  ).catch(error => {console.log(error)});
+
 
   return null;
 
@@ -191,19 +186,6 @@ viewMoreButtons.forEach(function(node){node.onclick = (elem => fillAndShowPopupM
 
 /* END - View button handling */
 
-/* BEGIN - API CALL FOR DATA */
-var userIdAPI;
-axios.get('https://jsonplaceholder.typicode.com/todos/1').then(
-    response => {console.log(response);
-    userIdAPI=response.data.userId;
-    console.log(userIdAPI+ 'is the userId from the API');
-    }
-).catch(error => {console.log(error)});
-
-
-/* END - API CALL FOR DATA */
-
-
 /* BEGIN - Polling Test */
 
 document.querySelector("#pollTest").onclick = async function (){
@@ -211,8 +193,6 @@ document.querySelector("#pollTest").onclick = async function (){
 
   const poll = async function (fn, fnCondition, ms) {
     let result = await fn();
-    console.log('fncondition result:')
-    console.log(fnCondition(result));
     while (fnCondition(result)) {
       await wait(ms);
       result = await fn();
@@ -228,8 +208,6 @@ document.querySelector("#pollTest").onclick = async function (){
 
   let fetchReport = () => axios.get('https://pixiebrix-demo-api.herokuapp.com/submissions/'+document.getElementById("submissionId").innerText);
   let validate = function (result) {
-    console.log('result:');
-    console.log(result);
     // TODO: Replace this with a polling search for SCORE!
     return result.data.score==null;
   };
