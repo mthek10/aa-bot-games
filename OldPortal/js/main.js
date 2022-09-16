@@ -185,20 +185,6 @@ window.onclick = function(event) {
 
 /* END - MODAL HANDLING FOR ACCOUNT DETAILS */
 
-/* BEGIN - LOGIN PAGE HANDLING */
-var loginBtn = document.getElementById("loginBtn");
-var usernameField = document.getElementById('username');
-var passwordField = document.getElementById('password');
-loginBtn ? loginBtn.onclick = function (){
-
-  if (usernameField.value==="mark@pixiebrix.com" && passwordField.value === "aabotgames2022") {
-    location.href="/OldPortal/index.html"
-  } else {
-    alert("Incorrect username and password combination. Please try again.");
-
-  }
-} : '';
-/* END - LOGIN PAGE HANDLING */
 
 /* BEGIN - View button handling */
 
