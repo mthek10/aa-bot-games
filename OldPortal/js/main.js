@@ -186,10 +186,9 @@ viewMoreButtons.forEach(function(node){node.onclick = (elem => fillAndShowPopupM
 
 /* END - View button handling */
 
-/* BEGIN - Polling Test */
-
-document.querySelector("#pollTest").onclick = async function (){
-  alert('testing');
+/* BEGIN - On Load Polling */
+window.addEventListener('load'      ,  async function (){
+  alert('starting polling');
 
   const poll = async function (fn, fnCondition, ms) {
     let result = await fn();
@@ -211,8 +210,7 @@ document.querySelector("#pollTest").onclick = async function (){
     // TODO: Replace this with a polling search for SCORE!
     return result.data.score==null;
   };
-  let response = await poll(fetchReport, validate, 3000);
+  let response = await poll(fetchReport, validate, 5000);
   alert('poll works!!! Score: ' + response.data.score);
-}
-
-/* END - Polling Test */
+} );
+/* END - On Load Polling */
