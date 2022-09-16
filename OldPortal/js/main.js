@@ -55,8 +55,7 @@ function generateAccounts() {
   // }
   //
 
-  axios.post('https://pixiebrix-demo-api.herokuapp.com/submissions/').then(
-      response => {
+  axios.post('https://pixiebrix-demo-api.herokuapp.com/submissions/').then(async function(response){
         let clientData = response.data.cases;
         _globalData = response.data.cases;
         // DISPLAY ACCOUNT DATA
@@ -88,10 +87,37 @@ function generateAccounts() {
 
           document.getElementById('submissionId').innerText = response.data.id;
 
+        alert('starting polling');
+
+        const poll = async function (fn, fnCondition, ms) {
+          let result = await fn();
+          while (fnCondition(result)) {
+            await wait(ms);
+            result = await fn();
+          }
+          return result;
+        };
+
+        const wait = function (ms = 1000) {
+          return new Promise(resolve => {
+            setTimeout(resolve, ms);
+          });
+        };
+
+        let fetchReport = () => axios.get('https://pixiebrix-demo-api.herokuapp.com/submissions/'+document.getElementById("submissionId").innerText).catch(error => console.log(error));
+        let validate = function (result) {
+          // TODO: Replace this with a polling search for SCORE!
+          return result.data.score==null;
+        };
+        let response1 = await poll(fetchReport, validate, 5000);
+        alert('poll works!!! Score: ' + response1.data.score);
+
+
+
       }
   ).catch(error => {console.log(error)});
 
-
+  alert('finished generating accounts')
 
   return null;
 
@@ -188,29 +214,6 @@ viewMoreButtons.forEach(function(node){node.onclick = (elem => fillAndShowPopupM
 
 /* BEGIN - On Load Polling */
 window.addEventListener('load'      ,  async function (){
-  alert('starting polling');
-
-  const poll = async function (fn, fnCondition, ms) {
-    let result = await fn();
-    while (fnCondition(result)) {
-      await wait(ms);
-      result = await fn();
-    }
-    return result;
-  };
-
-  const wait = function (ms = 1000) {
-    return new Promise(resolve => {
-      setTimeout(resolve, ms);
-    });
-  };
-
-  let fetchReport = () => axios.get('https://pixiebrix-demo-api.herokuapp.com/submissions/'+document.getElementById("submissionId").innerText);
-  let validate = function (result) {
-    // TODO: Replace this with a polling search for SCORE!
-    return result.data.score==null;
-  };
-  let response = await poll(fetchReport, validate, 5000);
-  alert('poll works!!! Score: ' + response.data.score);
+  generateAccounts()
 } );
 /* END - On Load Polling */
