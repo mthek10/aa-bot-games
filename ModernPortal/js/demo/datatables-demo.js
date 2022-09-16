@@ -56,7 +56,9 @@ function submitTableDataToApi(){
   console.log(postBody);
 
   // Send to API
-  axios.post('https://pixiebrix-demo-api.herokuapp.com/submissions/'+getSubmissionIdURL()+'/validate/',postBody).then(
+  axios.post('https://pixiebrix-demo-api.herokuapp.com/submissions/'+getSubmissionIdURL()+'/validate/',postBody, {
+      headers: {'Content-Type': 'application/json'}
+  }).then(
       response => console.log(response)
   ).catch(
       error => console.log(error)
