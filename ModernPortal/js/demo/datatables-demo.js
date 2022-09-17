@@ -7,7 +7,6 @@ $(document).ready(function () {
   });
 
   $('#btn-submitEntries').on('click', function () {
-    alert('PUT INTO API CALL + ID:' + getSubmissionIdURL());
     submitTableDataToApi();
   });
 
