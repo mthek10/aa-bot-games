@@ -1,0 +1,62 @@
+ /*-----START FONT STUFF --------------*/
+ @font-face {
+    font-family: "museo_sans";
+    src: url("https://www.automationanywhere.com/templates/aa-sitetemplate/fonts/museo_sans/MuseoSans_100-webfont.eot");
+    src: url("https://www.automationanywhere.com/templates/aa-sitetemplate/fonts/museo_sans/MuseoSans_100-webfont.eot?#iefix") format("embedded-opentype"),
+        url("https://www.automationanywhere.com/templates/aa-sitetemplate/fonts/museo_sans/MuseoSans_100-webfont.woff2") format("woff2"),
+        url("https://www.automationanywhere.com/templates/aa-sitetemplate/fonts/museo_sans/MuseoSans_100-webfont.woff") format("woff"),
+        url("https://www.automationanywhere.com/templates/aa-sitetemplate/fonts/museo_sans/MuseoSans_100-webfont.ttf") format("truetype"),
+        url("https://www.automationanywhere.com/templates/aa-sitetemplate/fonts/museo_sans/MuseoSans_100-webfont.svg#museo_sans100") format("svg");
+    font-weight: 100;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "museo_sans";
+    src: url("https://www.automationanywhere.com/templates/aa-sitetemplate/fonts/museo_sans/MuseoSans_300-webfont.eot");
+    src: url("https://www.automationanywhere.com/templates/aa-sitetemplate/fonts/museo_sans/MuseoSans_300-webfont.eot?#iefix") format("embedded-opentype"),
+        url("https://www.automationanywhere.com/templates/aa-sitetemplate/fonts/museo_sans/MuseoSans_300-webfont.woff2") format("woff2"),
+        url("https://www.automationanywhere.com/templates/aa-sitetemplate/fonts/museo_sans/MuseoSans_300-webfont.woff") format("woff"),
+        url("https://www.automationanywhere.com/templates/aa-sitetemplate/fonts/museo_sans/MuseoSans_300-webfont.ttf") format("truetype"),
+        url("https://www.automationanywhere.com/templates/aa-sitetemplate/fonts/museo_sans/MuseoSans_300-webfont.svg#museo_sans300") format("svg");
+    font-weight: 300;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "museo_sans";
+    src: url("https://www.automationanywhere.com/templates/aa-sitetemplate/fonts/museo_sans/MuseoSans_500-webfont.eot");
+    src: url("https://www.automationanywhere.com/templates/aa-sitetemplate/fonts/museo_sans/MuseoSans_500-webfont.eot?#iefix") format("embedded-opentype"),
+        url("https://www.automationanywhere.com/templates/aa-sitetemplate/fonts/museo_sans/MuseoSans_500-webfont.woff2") format("woff2"),
+        url("https://www.automationanywhere.com/templates/aa-sitetemplate/fonts/museo_sans/MuseoSans_500-webfont.woff") format("woff"),
+        url("https://www.automationanywhere.com/templates/aa-sitetemplate/fonts/museo_sans/MuseoSans_500-webfont.ttf") format("truetype"),
+        url("https://www.automationanywhere.com/templates/aa-sitetemplate/fonts/museo_sans/MuseoSans_500-webfont.svg#museo_sans500") format("svg");
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "museo_sans";
+    src: url("https://www.automationanywhere.com/templates/aa-sitetemplate/fonts/museo_sans/MuseoSans_700-webfont.eot");
+    src: url("https://www.automationanywhere.com/templates/aa-sitetemplate/fonts/museo_sans/MuseoSans_700-webfont.eot?#iefix") format("embedded-opentype"),
+        url("https://www.automationanywhere.com/templates/aa-sitetemplate/fonts/museo_sans/MuseoSans_700-webfont.woff2") format("woff2"),
+        url("https://www.automationanywhere.com/templates/aa-sitetemplate/fonts/museo_sans/MuseoSans_700-webfont.woff") format("woff"),
+        url("https://www.automationanywhere.com/templates/aa-sitetemplate/fonts/museo_sans/MuseoSans_700-webfont.ttf") format("truetype"),
+        url("https://www.automationanywhere.com/templates/aa-sitetemplate/fonts/museo_sans/MuseoSans_700-webfont.svg#museo_sans700") format("svg");
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "museo_sans";
+    src: url("https://www.automationanywhere.com/templates/aa-sitetemplate/fonts/museo_sans/MuseoSans_900-webfont.eot");
+    src: url("https://www.automationanywhere.com/templates/aa-sitetemplate/fonts/museo_sans/MuseoSans_900-webfont.eot?#iefix") format("embedded-opentype"),
+        url("https://www.automationanywhere.com/templates/aa-sitetemplate/fonts/museo_sans/MuseoSans_900-webfont.woff2") format("woff2"),
+        url("https://www.automationanywhere.com/templates/aa-sitetemplate/fonts/museo_sans/MuseoSans_900-webfont.woff") format("woff"),
+        url("https://www.automationanywhere.com/templates/aa-sitetemplate/fonts/museo_sans/MuseoSans_900-webfont.ttf") format("truetype"),
+        url("https://www.automationanywhere.com/templates/aa-sitetemplate/fonts/museo_sans/MuseoSans_900-webfont.svg#museo_sans900") format("svg");
+    font-weight: 900;
+    font-style: normal;
+}
+
+/*-----END Font Stuff------------*/

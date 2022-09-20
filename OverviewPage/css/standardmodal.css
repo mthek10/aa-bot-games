@@ -1,0 +1,208 @@
+/*-----START Bootstrap Modal CSS------------*/
+.modal-confirm {
+    color: #636363;
+    width: 600px !important;
+    max-width: 600px !important;
+}
+
+.modal-confirm .modal-content {
+    padding: 0;
+    border-radius: 10px;
+    border: none;
+}
+
+.modal-confirm .modal-header {
+    border-bottom: none;
+    position: relative;
+    height: 0 !important;
+    padding: 0 !important;
+}
+
+.modal-confirm .modal-banner {
+    overflow: hidden;
+    height: 150px;
+    border-radius: 10px 10px 0 0;
+}
+
+.modal-confirm .modal-banner {
+    background: #222;
+}
+
+.modal-confirm h4 {
+    text-align: center;
+    font-size: 26px;
+
+    font-weight: 600;
+    color: #333;
+}
+
+
+.modal-confirm .form-control,
+.modal-confirm .btn {
+    min-height: 40px;
+    border-radius: 30px !important;
+    min-width: 100px;
+    background-color: #FF5A10 !important;
+}
+
+.modal-confirm .close {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+}
+
+.modal-confirm .modal-footer {
+    border: none;
+    text-align: center;
+    border-radius: 5px;
+    font-size: 13px;
+    justify-content: center !important;
+}
+
+.modal-confirm .icon-box {
+    color: #fff;
+    position: absolute;
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+    top: -40px;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    z-index: 9;
+    /* background: #82ce34; */
+    padding-top: 25px;
+
+    text-align: center;
+    background: linear-gradient(180deg, #FFBC03 0%, #FF5A10 100%);
+
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.1);
+}
+
+.modal-confirm .icon-box i {
+    font-size: 46px;
+    position: relative;
+    top: 3px;
+}
+
+.modal-confirm.modal-dialog {
+    margin-top: 80px;
+}
+
+.modal-confirm .btn {
+    color: #fff;
+    border-radius: 4px;
+    background: #82ce34;
+    text-decoration: none;
+    transition: all 0.4s;
+    line-height: normal;
+    border: none;
+}
+
+.modal-confirm .btn:hover,
+.modal-confirm .btn:focus {
+    background: #6fb32b;
+    outline: none;
+}
+
+/* .modal-confirm .modal-body {
+    padding: 0 30px;
+} */
+
+.GUID-container{
+    margin-bottom: -1rem;
+}
+
+.trigger-btn {
+    display: inline-block;
+    margin: 100px auto;
+}
+
+/*-----END Bootstrap Modal CSS------------*/
+/*-----START Bootstrap Modal Card CSS-----*/
+
+.card {
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+.card-body .rotate {
+    z-index: 8;
+    float: right;
+    height: 100%;
+}
+
+.card-body .rotate i {
+    color: rgba(20, 20, 20, 0.15);
+    position: absolute;
+    left: 0;
+    left: auto;
+    right: -10px;
+    bottom: 0;
+    display: block;
+    -webkit-transform: rotate(-44deg);
+    -moz-transform: rotate(-44deg);
+    -o-transform: rotate(-44deg);
+    -ms-transform: rotate(-44deg);
+    transform: rotate(-44deg);
+}
+
+.card h2.score-label,
+.card h2.score-value {
+    font-weight: 500;
+}
+
+.card h2.score-label {
+    color: #FFBC03;
+    font-size: 1rem;
+    text-transform: uppercase;
+    font-weight: 500 !important;
+    line-height: 1.6rem !important;
+    vertical-align: middle;
+}
+
+.card h3.score-value {
+    color: white;
+    font-size: 1.8rem;
+    font-weight: 600;
+    line-height: 2rem;
+
+}
+
+.card h4.score-value {
+    color: white;
+    font-size: 1.5rem;
+    font-weight: 500;
+    line-height: 1.6rem;
+
+}
+
+.material-icons {
+    color: #fff;
+    vertical-align: middle;
+    display: inline-block !important;
+    /* padding-top: 5px; */
+    font-size: 22px;
+    line-height: 1rem !important;
+    /* Support for all WebKit browsers. */
+    -webkit-font-smoothing: antialiased;
+    /* Support for Safari and Chrome. */
+    text-rendering: optimizeLegibility;
+
+    /* Support for Firefox. */
+    -moz-osx-font-smoothing: grayscale;
+
+    /* Support for IE. */
+    font-feature-settings: 'liga';
+
+}
+
+.bg-complete {
+    background-color: #333;
+}
+
+.bg-value {
+    background-color: #444;
+}
+
+/*-----END Bootstrap Modal Card CSS-----*/
