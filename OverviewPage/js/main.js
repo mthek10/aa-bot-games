@@ -1,11 +1,12 @@
 // OLD PORTAL BUTTON
 document.getElementById('oldPortalLogin').onclick = function (){
-    window.location.href = '../../OldPortal/login.html'
+    window.open('../../OldPortal/login.html', '_blank');
+
 };
 
 // NEW PORTAL BUTTON
 document.getElementById('newPortalLogin').onclick = function (){
-    window.location.href = '../../ModernPortal/login.html'
+    window.open('../../ModernPortal/login.html', '_blank');
 };
 
 // FORM HANDLER
