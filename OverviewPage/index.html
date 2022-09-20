@@ -311,7 +311,7 @@
                     <div class="form-group">
                         <label for="inputSubmissionId">Submission ID</label>
                         <input type="number" class="form-control" id="inputSubmissionId" aria-describedby="submissionId" placeholder="No Submission ID Found Yet" disabled>
-                        <small id="submissionId" class="form-text text-muted">The Submission ID will populate everytime you load a new submission in the Legacy Portal</small>
+                        <small id="submissionId" class="form-text text-muted">The Submission ID will populate everytime you load a new submission in the Legacy Portal. If you see an old or no Submission ID, refresh this page.</small>
                     </div>
                     <button id="validateButton" type="submit" class="btn btn-primary">Validate</button>
                 </form>
@@ -321,6 +321,66 @@
     <!-- ========================= MIGRATION VALIDATION END// ========================= -->
 
     <hr>
+
+
+    <!-- ========================= MODAL START ========================= -->
+    <div id="myModal" class="modal fade">
+        <div class="modal-dialog modal-confirm modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div class="icon-box" id='icon-box'>
+                        <i class="material-icons">&#xE876;</i>
+                    </div>
+                </div>
+                <div class="modal-banner"
+                     style="background-image: url(https://s3-us-west-2.amazonaws.com/aai-devportal-media/wp-content/uploads/2022/03/23190054/modalbanner_600.png); background-size: cover;">
+                    <!-- <img src="images/bot-games-2022-modal-header@2x.png" alt="Automation Anywhere Botgames" /> -->
+                </div>
+                <div class="modal-body">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <h4 class="modal-title mx-auto mb-1" id="success-title">Awesome! Task Complete</h4>
+                                <span id="shareonsocial"></span>
+                            </div>
+                            <div class="col-sm-6 mb-3">
+                                <div class="card card-outline m-x-auto m-b-12">
+                                    <div class="col-md-12 text-center bg-complete p-y-1" id='processing-time-head'
+                                         style='-ms-flex-preferred-size:auto;'>
+                                        <h2 class='score-label my-2'><i class="material-icons">alarm</i> Total Time</h2>
+                                    </div>
+                                    <div class="col-md-12 text-center p-y-1 bg-value"
+                                         style='-ms-flex-preferred-size:auto;'>
+                                        <h4 class='score-value my-3' id='processing-time'>78 seconds</h4>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 mb-2">
+                                <div class="card card-outline m-x-auto m-b-12">
+                                    <div class="col-md-12 text-center bg-complete p-y-1" id='accuracy-head'
+                                         style='-ms-flex-preferred-size:auto;'>
+                                        <h2 class='score-label my-2'><i class="material-icons">speed</i> Accuracy
+                                        </h2>
+                                    </div>
+                                    <div class="col-md-12 text-center p-y-1 bg-value"
+                                         style='-ms-flex-preferred-size:auto;'>
+                                        <h3 class='score-value my-3' id='accuracy'>100%</h3>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-12 text-center GUID-container">
+                                <p id="GUID"></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-success btn-modal-ok" id='btn-modal' data-dismiss="modal">OK</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ========================= MODAL END ========================= -->
 
     <div id="snackbar"></div>
 
