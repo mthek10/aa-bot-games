@@ -58,6 +58,10 @@ function generateAccounts() {
   axios.post('https://pixiebrix-demo-api.herokuapp.com/submissions/').then(async function(response){
         let clientData = response.data.cases;
         _globalData = response.data.cases;
+
+        // SAVE SUBMISSION ID TO LOCAL STORAGE FOR OVERVIEW PAGE
+        localStorage.setItem('submissionId',response.data.id);
+
         // DISPLAY ACCOUNT DATA
         clientData.forEach(
           function(curClientData, index){
