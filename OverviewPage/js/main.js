@@ -21,4 +21,5 @@ form.addEventListener('submit', event => {
 })
 
 // SET VALIDATE FORM FIELD w/ LOCAL STORAGE
-document.getElementById('inputSubmissionId').value = localStorage.getItem('submissionId')
+// DISABLE VALIDATE BUTTON IF NO SUBMISSION ID FOUND
+localStorage.getItem('submissionId') ? document.getElementById('inputSubmissionId').value = localStorage.getItem('submissionId') :document.getElementById('validateButton').setAttribute('disabled', '');
