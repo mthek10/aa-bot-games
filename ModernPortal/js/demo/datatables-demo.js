@@ -4,11 +4,13 @@ $(document).ready(function () {
   $('#btn-modalCreate').on('click', function () {
     t.row.add([document.getElementById("input-caseId").value, document.getElementById("input-SSN").value,document.getElementById("input-date").value,document.getElementById("input-transactionType").value,document.getElementById("input-accountType").value,document.getElementById("input-transactionAmount").value,document.getElementById("input-financialAdvisor").value]).draw(false);
     $("#newRecordModal").modal('hide');
-  });
-
-  $('#btn-submitEntries').on('click', function () {
     submitTableDataToApi();
   });
+
+  // $('#btn-submitEntries').on('click', function () {
+  //   submitTableDataToApi();
+  //
+  // });
 
 });
 
