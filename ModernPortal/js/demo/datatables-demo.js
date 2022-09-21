@@ -53,8 +53,7 @@ function submitTableDataToApi(){
             )
         }
     );
-
-
+    // console.log(postBodyNew);
   // Send to API
   axios.post('https://pixiebrix-demo-api.herokuapp.com/submissions/'+getSubmissionIdURL()+'/validate/',JSON.stringify(postBodyNew),{
       headers: {'Content-Type': 'application/json'}
