@@ -259,7 +259,7 @@
         <div class="challenge-intro">
             <div class='row'>
                 <img class="company-logo banner" style="background:white; padding-right:15px; padding-left:55px;"
-                    src="https://s3-us-west-2.amazonaws.com/aai-devportal-media/wp-content/uploads/2021/10/27195230/Score.png" />
+                    src="./images/swivelchair-logo.png" />
                 <a class="mx-auto banner" target="_blank" href="https://developer.automationanywhere.com/botgames"> <img
                         width="570px" style="background: white; "
                         src="https://s3-us-west-2.amazonaws.com/aai-devportal-media/wp-content/uploads/2022/03/15075025/Bot-Games-Season-2-Banner.jpg"></a>
@@ -268,9 +268,46 @@
                             src="https://s3-us-west-2.amazonaws.com/aai-devportal-media/wp-content/uploads/2022/03/15075025/Bot-Games-Season-2-Banner.jpg"></a> -->
             </div>
             <hr>
-            <!-- <h2>Vendor Registration</h2> -->
-            <p>Create an embedded automation solution to migrate all 10 rows of data from the Legacy Application Portal (linked below) to the Modern Case Management Platform (also linked below). Once completed, click “Validate” to finish the challenge and receive your score.
-            </p>
+            <div id="instructions">
+                <h2>Challenge Background</h2>
+
+                Certain financial transactions for <b>Arcadia Financial’s Managed Clients</b> still go through a legacy workflow application that the firm has yet to migrate off of. Not only has the application’s vendor been charging insane amounts for extended support, the organization has largely abandoned the product completely, meaning that no additional integrations/updates are being made outside of sev 1 security updates.
+
+                Each day, as <b>Arcadia Financial</b> advisors work with clients to perform rollovers, transfers, or IRA contributions - the transactions are logged into the <b>FinTech WorkFlow Solutions</b> platform. The back office operations team of Arcadia Financial are assigned cases based on their security clearance and familiarity with Arcadia products, to transfer data from the FinTech Workflow Solution’s interface to specific workflow transactions in Arcadia's more modern Case Management platform for validation and processing.
+
+                One of these validations is to ensure that the correct financial advisor is listed on the case. <b>Often, the associate generating the data fails to update the advisor on the case, so before migrating the data, you will need to append the name of the newest advisor to any unlabelled cases: “Jennifer Allston”</b>.
+
+                <br><br><h2>Challenge Goal</h2>
+
+                Create an embedded automation solution to migrate all 10 rows of data from the Legacy Application Portal (linked below) to the Modern Case Management Platform (also linked below). Once completed, click “Validate Submission” to finish the challenge and receive your score.
+
+
+                <br><br><h2>Tip</h2>
+
+                Transactions are randomized every time you load the challenge page, so make sure the transactions are read from the live page before you look for a matching transaction in the banking application.
+
+                When you complete the challenge, a GUID will show up at the bottom of the results modal. Copy and save the GUID’s for your accuracy score
+
+               <br> <br><b>IMPORTANT</b> Use the “HINT” links on the Legacy Portal to get helpful hints on how to use the new AARI Extensions!
+
+                <br><br><h2>Rules</h2>
+
+                You are expected to launch the legacy portal -  banking application from the challenge page and then login to the banking app. Also, do not cache the transaction details from the banking application since that’s not how it is done in the production environment, and we want to mimic a similar experience for this challenge.
+
+                You must integrate AARI extensions to perform a portion or all of the challenge.
+
+                <br><br><h2>Sharing Your Results</h2>
+
+                Once you’ve successfully completed the challenge, share a screenshot of your results on social using the hashtags #BotGames and #AARI and tag 3 other RPA developers who you challenge to complete this exercise. We want to celebrate your accomplishment as well, so our social team will be looking for individuals who share their results on social media (and tag/challenge others) throughout the month of April to reward them with limited edition Bot Games swag. So complete each challenge and share your results for each week’s challenge to increase your chances of being selected.
+
+                <br><br><h2>Conclusion</h2>
+
+                Swivel chair data migration is an extremely popular use case in the world of Automation. This challenge is meant to show you the new AARI Extensions features in a use case which everyone is comfortable. Embedded automation can be a powerful tool in your toolkit when tackling the human / automation interaction. From embedding bot trigger buttons on pages, to bringing context and information into the applications where users reside, we hope this new feature will enable more powerful and seamless automations!
+
+                <br><br>Like all our challenge pages, there’s more than one way to solve this – so even if you build it in a certain way, play around with different approaches to see how that impacts the reliability of your automation and the usefulness for an end user.
+
+                <br><br>Finally, if you tried this challenge and are getting stuck, don’t worry! We’ll be demonstrating the solution during our Tech Talk at our Imagine conference. Best of luck! Go Be Great!
+            </div>
         </div>
     </div>
     <!-- ========================= INSTRUCTIONS SECTION END// ========================= -->
@@ -406,7 +443,6 @@
     <!-- New script end-->
 
     <!-- <script type='text/javascript' src='js/examplechallenge.js'></script> -->
-    <script type='text/javascript' src='js/examplechallenge_en.js'></script>
     <script type='text/javascript' src='js/main.js'></script>
 </body>
 
