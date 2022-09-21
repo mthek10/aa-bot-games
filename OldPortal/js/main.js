@@ -93,28 +93,28 @@ function generateAccounts() {
 
 
 
-        const poll = async function (fn, fnCondition, ms) {
-          let result = await fn();
-          while (fnCondition(result)) {
-            await wait(ms);
-            result = await fn();
-          }
-          return result;
-        };
-
-        const wait = function (ms = 1000) {
-          return new Promise(resolve => {
-            setTimeout(resolve, ms);
-          });
-        };
-
-        let fetchReport = () => axios.get('https://pixiebrix-demo-api.herokuapp.com/submissions/'+document.getElementById("submissionId").innerText).catch(error => console.log(error));
-        let validate = function (result) {
-          // TODO: Replace this with a polling search for SCORE!
-          return result.data.score==null;
-        };
-        let response1 = await poll(fetchReport, validate, 5000);
-        alert('Score: ' + response1.data.score + '/10');
+        // const poll = async function (fn, fnCondition, ms) {
+        //   let result = await fn();
+        //   while (fnCondition(result)) {
+        //     await wait(ms);
+        //     result = await fn();
+        //   }
+        //   return result;
+        // };
+        //
+        // const wait = function (ms = 1000) {
+        //   return new Promise(resolve => {
+        //     setTimeout(resolve, ms);
+        //   });
+        // };
+        //
+        // let fetchReport = () => axios.get('https://pixiebrix-demo-api.herokuapp.com/submissions/'+document.getElementById("submissionId").innerText).catch(error => console.log(error));
+        // let validate = function (result) {
+        //   // TODO: Replace this with a polling search for SCORE!
+        //   return result.data.score==null;
+        // };
+        // let response1 = await poll(fetchReport, validate, 5000);
+        // alert('Score: ' + response1.data.score + '/10');
 
 
 
