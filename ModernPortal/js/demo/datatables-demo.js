@@ -20,7 +20,7 @@ function getSubmissionIdURL(){
 }
 
 function loginValidation() {
-  if (document.getElementById("loginInputEmail").value === ('mark@pixiebrix.com') && document.getElementById('loginInputPassword').value === ('aabotgames2022')) {
+  if (document.getElementById("loginInputEmail").value === ('douglass@arcadia-fin.com') && document.getElementById('loginInputPassword').value === ('aabotgames2022')) {
     let userInputSubmissionId = document.getElementById("loginInputSubmissionId").value
     window.location = "index.html?submissionId="+ userInputSubmissionId;
   } else {
