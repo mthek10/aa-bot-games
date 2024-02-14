@@ -7,7 +7,7 @@
 
 /* Primary Button Styles */
 .btn-primary {
-  color: #5959EB !important; /* Text color set to a shade of blue (#5959EB) */
+  background-color: #5959EB !important; /* Text color set to a shade of blue (#5959EB) */
   border-radius: 4px; /* Rounded corners with a radius of 4 pixels */
   /* Additional styles such as background-color, border, padding, etc. can be added as needed */
 }
