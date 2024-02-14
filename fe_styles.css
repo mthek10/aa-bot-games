@@ -1,7 +1,7 @@
 /* Semibold Header Styles */
 .semibold-header {
-  font-weight: 550; /* Semibold font weight */
-  font-size: 20px; /* Font size set to 20px */
+  font-weight: 600; /* Semibold font weight */
+  font-size: 20 px; /* Font size set to 20px */
   /* Additional styles such as text-transform, letter-spacing, etc. can be added as needed */
 }
 
@@ -20,7 +20,7 @@
 
 /* Secondary Button Styles */
 .btn-light {
-  border-radius: 4px; /* Rounded corners with a radius of 4 pixels */
+  border-radius: 4 px; /* Rounded corners with a radius of 4 pixels */
   /* Additional styles such as color, border, padding, etc. can be added as needed */
 }
 
