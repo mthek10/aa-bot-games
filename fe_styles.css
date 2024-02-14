@@ -6,11 +6,17 @@
 }
 
 /* Primary Button Styles */
-.btn-primary {
-  background-color: #5959EB !important; /* Text color set to a shade of blue (#5959EB) */
-  border-radius: 4px; /* Rounded corners with a radius of 4 pixels */
-  /* Additional styles such as background-color, border, padding, etc. can be added as needed */
-}
+.btn-primary{color:#fff;background-color:#5959eb;border-color:#5959eb}
+
+.btn-primary:hover{color:#fff;background-color:#3737e7;border-color:#2b2be6}
+
+.btn-primary.focus,.btn-primary:focus{color:#fff;background-color:#3737e7;border-color:#2b2be6;box-shadow:0 0 0 .2rem rgba(114,114,238,.5)}
+
+.btn-primary.disabled,.btn-primary:disabled{color:#fff;background-color:#5959eb;border-color:#5959eb}
+
+.btn-primary:not(:disabled):not(.disabled).active,.btn-primary:not(:disabled):not(.disabled):active,.show>.btn-primary.dropdown-toggle{color:#fff;background-color:#2b2be6;border-color:#2020e4}
+
+.btn-primary:not(:disabled):not(.disabled).active:focus,.btn-primary:not(:disabled):not(.disabled):active:focus,.show>.btn-primary.dropdown-toggle:focus{box-shadow:0 0 0 .2rem rgba(114,114,238,.5)}
 
 /* Secondary Button Styles */
 .btn-light {
