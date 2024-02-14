@@ -13,13 +13,13 @@
 }
 
 /* Secondary Button Styles */
-.btn-secondary {
+.btn-light {
   border-radius: 4px; /* Rounded corners with a radius of 4 pixels */
   /* Additional styles such as color, border, padding, etc. can be added as needed */
 }
 
 /* Secondary Button Hover Styles */
-.btn-secondary:hover {
+.btn-light:hover {
   background-color: #ebebf1; /* Background color set to a light gray (#ebebf1) on hover */
 }
 
