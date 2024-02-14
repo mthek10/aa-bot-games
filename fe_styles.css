@@ -29,6 +29,13 @@
   background-color: #ebebf1; /* Background color set to a light gray (#ebebf1) on hover */
 }
 
+/* Vertical Centering for Buttons */
+.btn-vertical-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 /* Article Text Styles */
 .article-text {
   font-family: 'Noto Sans', sans-serif; /* Set font family to 'Noto Sans', sans-serif */
