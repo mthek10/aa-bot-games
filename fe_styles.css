@@ -1,0 +1,33 @@
+/* Semibold Header Styles */
+.semibold-header {
+  font-weight: 600; /* Semibold font weight */
+  font-size: 20px; /* Font size set to 20px */
+  /* Additional styles such as text-transform, letter-spacing, etc. can be added as needed */
+}
+
+/* Primary Button Styles */
+.btn-primary {
+  color: #5959EB !important; /* Text color set to a shade of blue (#5959EB) */
+  border-radius: 4px; /* Rounded corners with a radius of 4 pixels */
+  /* Additional styles such as background-color, border, padding, etc. can be added as needed */
+}
+
+/* Secondary Button Styles */
+.btn-secondary {
+  border-radius: 4px; /* Rounded corners with a radius of 4 pixels */
+  /* Additional styles such as color, border, padding, etc. can be added as needed */
+}
+
+/* Secondary Button Hover Styles */
+.btn-secondary:hover {
+  background-color: #ebebf1; /* Background color set to a light gray (#ebebf1) on hover */
+}
+
+/* Article Text Styles */
+.article-text {
+  font-family: 'Noto Sans', sans-serif; /* Set font family to 'Noto Sans', sans-serif */
+  font-weight: 400; /* Regular font weight */
+  font-size: 14px; /* Font size set to 14px */
+  color: #09092D; /* Text color set to a dark shade (#09092D) */
+  overflow: hidden; /* Hide overflow content */
+}
