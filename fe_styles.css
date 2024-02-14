@@ -1,6 +1,6 @@
 /* Semibold Header Styles */
 .semibold-header {
-  font-weight: 600; /* Semibold font weight */
+  font-weight: 500; /* Semibold font weight */
   font-size: 20 px; /* Font size set to 20px */
   /* Additional styles such as text-transform, letter-spacing, etc. can be added as needed */
 }
