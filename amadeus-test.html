@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Four Terminals</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .terminal {
+            width: 50%;
+            height: 50%;
+            box-sizing: border-box;
+            border: 1px solid #000;
+            overflow: auto;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .modeString {
+            background-color: #333;
+            color: #fff;
+            padding: 5px;
+        }
+        .cmdBlock {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        .cmdLine {
+            white-space: pre-wrap;
+        }
+    </style>
+</head>
+<body>
+    <div id="cryptics1_cmd_shellbridge_shellWindow_bottom_left" class="terminal">
+        <div id="cryptics1_cmd_shellbridge_shellWindow_bottom_left_modeString" class="modeString">Bottom Left Terminal</div>
+        <div class="cmdBlock">
+            <div class="cmdLine">
+                <pre>TWD 12345</pre>
+            </div>
+        </div>
+    </div>
+    <div id="cryptics1_cmd_shellbridge_shellWindow_top_left" class="terminal">
+        <div id="cryptics1_cmd_shellbridge_shellWindow_top_left_modeString" class="modeString">Top Left Terminal</div>
+        <div class="cmdBlock">
+            <div class="cmdLine">
+                <pre> twd 67890</pre>
+            </div>
+        </div>
+    </div>
+    <div id="cryptics1_cmd_shellbridge_shellWindow_top_right" class="terminal">
+        <div id="cryptics1_cmd_shellbridge_shellWindow_top_right_modeString" class="modeString">Top Right Terminal</div>
+        <div class="cmdBlock">
+            <div class="cmdLine">
+                <pre>twd 54321</pre>
+            </div>
+        </div>
+    </div>
+    <div id="cryptics1_cmd_shellbridge_shellWindow_bottom_right" class="terminal">
+        <div id="cryptics1_cmd_shellbridge_shellWindow_bottom_right_modeString" class="modeString">Bottom Right Terminal</div>
+        <div class="cmdBlock">
+            <div class="cmdLine">
+                <pre>TWD 09876</pre>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
