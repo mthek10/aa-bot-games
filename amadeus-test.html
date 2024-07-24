@@ -87,10 +87,22 @@
             input.addEventListener('keydown', function(event) {
                 if (event.key === 'Enter') {
                     const cmdBlocksContainer = this.previousElementSibling;
+                    
+                    // Create new cmdBlock
                     const newCmdBlock = document.createElement('div');
-                    newCmdBlock.classList.add('cmdLine');
-                    newCmdBlock.innerHTML = `<pre>${this.value}</pre>`;
+                    newCmdBlock.classList.add('cmdBlock');
+
+                    // Create new cmdLine
+                    const newCmdLine = document.createElement('div');
+                    newCmdLine.classList.add('cmdLine');
+                    newCmdLine.innerHTML = `<pre>${this.value}</pre>`;
+                    
+                    // Append cmdLine to cmdBlock
+                    newCmdBlock.appendChild(newCmdLine);
+
+                    // Append cmdBlock to container
                     cmdBlocksContainer.appendChild(newCmdBlock);
+                    
                     this.value = '';  // Clear the input
                 }
             });
