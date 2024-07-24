@@ -36,6 +36,12 @@
         .cmdLine {
             white-space: pre-wrap;
         }
+        .terminal-input {
+            width: calc(100% - 10px);
+            margin: 5px;
+            padding: 5px;
+            border: 1px solid #ccc;
+        }
     </style>
 </head>
 <body>
@@ -46,6 +52,7 @@
                 <pre>TWD 12345</pre>
             </div>
         </div>
+        <input type="text" class="terminal-input" placeholder="Type a command and press Enter">
     </div>
     <div id="cryptics1_cmd_shellbridge_shellWindow_top_left_modeString" class="terminal">
         <div class="modeString">Top Left Terminal</div>
@@ -54,6 +61,7 @@
                 <pre>TWD 67890</pre>
             </div>
         </div>
+        <input type="text" class="terminal-input" placeholder="Type a command and press Enter">
     </div>
     <div id="cryptics1_cmd_shellbridge_shellWindow_top_right_modeString" class="terminal">
         <div class="modeString">Top Right Terminal</div>
@@ -62,6 +70,7 @@
                 <pre>TWD 54321</pre>
             </div>
         </div>
+        <input type="text" class="terminal-input" placeholder="Type a command and press Enter">
     </div>
     <div id="cryptics1_cmd_shellbridge_shellWindow_bottom_right_modeString" class="terminal">
         <div class="modeString">Bottom Right Terminal</div>
@@ -70,6 +79,22 @@
                 <pre>TWD 09876</pre>
             </div>
         </div>
+        <input type="text" class="terminal-input" placeholder="Type a command and press Enter">
     </div>
+
+    <script>
+        document.querySelectorAll('.terminal-input').forEach(input => {
+            input.addEventListener('keydown', function(event) {
+                if (event.key === 'Enter') {
+                    const cmdBlocksContainer = this.previousElementSibling;
+                    const newCmdBlock = document.createElement('div');
+                    newCmdBlock.classList.add('cmdLine');
+                    newCmdBlock.innerHTML = `<pre>${this.value}</pre>`;
+                    cmdBlocksContainer.appendChild(newCmdBlock);
+                    this.value = '';  // Clear the input
+                }
+            });
+        });
+    </script>
 </body>
 </html>
