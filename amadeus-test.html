@@ -89,7 +89,7 @@
         function restoreTerminalData() {
             document.querySelectorAll('.terminal').forEach(terminal => {
                 const terminalId = terminal.id;
-                const cmdBlocksContainer = terminal.querySelector('.cmdBlock');
+                const cmdBlocksContainer = terminal.querySelector('.cmdBlocks');
                 cmdBlocksContainer.innerHTML = '';
                 if (terminalData[terminalId]) {
                     terminalData[terminalId].forEach(cmdText => {
