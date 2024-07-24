@@ -28,7 +28,6 @@
             background-color: black;
             color: green;
             position: relative;
-            transition: width 0.5s, height 0.5s;
         }
         .modeString {
             background-color: #111;
@@ -68,7 +67,7 @@
     </style>
 </head>
 <body>
-    <div id="terminal_top_left" class="terminal">
+    <div id="cryptics1_cmd_shellbridge_shellWindow_top_left_modeString" class="terminal">
         <div class="modeString">Top Left Terminal</div>
         <div class="cmdBlocks"></div>
         <input type="text" class="terminal-input" placeholder="Type a command and press Enter">
@@ -77,7 +76,7 @@
             <button class="split-vertical">Split Vertically</button>
         </div>
     </div>
-    <div id="terminal_top_right" class="terminal">
+    <div id="cryptics1_cmd_shellbridge_shellWindow_top_right_modeString" class="terminal">
         <div class="modeString">Top Right Terminal</div>
         <div class="cmdBlocks"></div>
         <input type="text" class="terminal-input" placeholder="Type a command and press Enter">
@@ -86,7 +85,7 @@
             <button class="split-vertical">Split Vertically</button>
         </div>
     </div>
-    <div id="terminal_bottom_left" class="terminal">
+    <div id="cryptics1_cmd_shellbridge_shellWindow_bottom_left_modeString" class="terminal">
         <div class="modeString">Bottom Left Terminal</div>
         <div class="cmdBlocks"></div>
         <input type="text" class="terminal-input" placeholder="Type a command and press Enter">
@@ -95,7 +94,7 @@
             <button class="split-vertical">Split Vertically</button>
         </div>
     </div>
-    <div id="terminal_bottom_right" class="terminal">
+    <div id="cryptics1_cmd_shellbridge_shellWindow_bottom_right_modeString" class="terminal">
         <div class="modeString">Bottom Right Terminal</div>
         <div class="cmdBlocks"></div>
         <input type="text" class="terminal-input" placeholder="Type a command and press Enter">
@@ -170,13 +169,7 @@
                 const rightTerminalId = terminalId.replace('left', 'right');
                 const rightTerminal = document.getElementById(rightTerminalId);
                 if (rightTerminal) {
-                    if (rightTerminal.style.display === 'none') {
-                        rightTerminal.style.display = 'flex';
-                        terminal.style.width = '50%';
-                    } else {
-                        rightTerminal.style.display = 'none';
-                        terminal.style.width = '100%';
-                    }
+                    rightTerminal.style.display = rightTerminal.style.display === 'none' ? 'flex' : 'none';
                 }
             });
         });
@@ -188,13 +181,7 @@
                 const bottomTerminalId = terminalId.replace('top', 'bottom');
                 const bottomTerminal = document.getElementById(bottomTerminalId);
                 if (bottomTerminal) {
-                    if (bottomTerminal.style.display === 'none') {
-                        bottomTerminal.style.display = 'flex';
-                        terminal.style.height = '50%';
-                    } else {
-                        bottomTerminal.style.display = 'none';
-                        terminal.style.height = '100%';
-                    }
+                    bottomTerminal.style.display = bottomTerminal.style.display === 'none' ? 'flex' : 'none';
                 }
             });
         });
