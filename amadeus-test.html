@@ -27,6 +27,7 @@
             justify-content: space-between;
             background-color: black;
             color: green;
+            position: relative;
         }
         .modeString {
             background-color: #111;
@@ -50,28 +51,57 @@
             background-color: black;
             color: #00FF00;
         }
+        .buttons {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+        }
+        .buttons button {
+            margin-left: 5px;
+            padding: 5px;
+            background-color: #111;
+            color: #00FF00;
+            border: 1px solid #00FF00;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
-    <div id="cryptics1_cmd_shellbridge_shellWindow_top_left_modeString" class="terminal">
+    <div id="terminal_top_left" class="terminal">
         <div class="modeString">Top Left Terminal</div>
         <div class="cmdBlocks"></div>
         <input type="text" class="terminal-input" placeholder="Type a command and press Enter">
+        <div class="buttons">
+            <button class="split-horizontal">Split Horizontally</button>
+            <button class="split-vertical">Split Vertically</button>
+        </div>
     </div>
-    <div id="cryptics1_cmd_shellbridge_shellWindow_top_right_modeString" class="terminal">
+    <div id="terminal_top_right" class="terminal">
         <div class="modeString">Top Right Terminal</div>
         <div class="cmdBlocks"></div>
         <input type="text" class="terminal-input" placeholder="Type a command and press Enter">
+        <div class="buttons">
+            <button class="split-horizontal">Split Horizontally</button>
+            <button class="split-vertical">Split Vertically</button>
+        </div>
     </div>
-    <div id="cryptics1_cmd_shellbridge_shellWindow_bottom_left_modeString" class="terminal">
+    <div id="terminal_bottom_left" class="terminal">
         <div class="modeString">Bottom Left Terminal</div>
         <div class="cmdBlocks"></div>
         <input type="text" class="terminal-input" placeholder="Type a command and press Enter">
+        <div class="buttons">
+            <button class="split-horizontal">Split Horizontally</button>
+            <button class="split-vertical">Split Vertically</button>
+        </div>
     </div>
-    <div id="cryptics1_cmd_shellbridge_shellWindow_bottom_right_modeString" class="terminal">
+    <div id="terminal_bottom_right" class="terminal">
         <div class="modeString">Bottom Right Terminal</div>
         <div class="cmdBlocks"></div>
         <input type="text" class="terminal-input" placeholder="Type a command and press Enter">
+        <div class="buttons">
+            <button class="split-horizontal">Split Horizontally</button>
+            <button class="split-vertical">Split Vertically</button>
+        </div>
     </div>
 
     <script>
@@ -81,7 +111,7 @@
             terminalData = {};
             document.querySelectorAll('.terminal').forEach(terminal => {
                 const terminalId = terminal.id;
-                const cmdBlocks = terminal.querySelectorAll('.cmdBlock .cmdLine pre');
+                const cmdBlocks = terminal.querySelectorAll('.cmdBlocks .cmdBlock .cmdLine pre');
                 terminalData[terminalId] = Array.from(cmdBlocks).map(cmd => cmd.textContent);
             });
         }
@@ -132,8 +162,33 @@
             });
         });
 
+        document.querySelectorAll('.split-horizontal').forEach(button => {
+            button.addEventListener('click', function() {
+                const terminal = this.closest('.terminal');
+                const terminalId = terminal.id;
+                const rightTerminalId = terminalId.replace('left', 'right');
+                const rightTerminal = document.getElementById(rightTerminalId);
+                if (rightTerminal) {
+                    rightTerminal.style.display = rightTerminal.style.display === 'none' ? 'flex' : 'none';
+                }
+            });
+        });
+
+        document.querySelectorAll('.split-vertical').forEach(button => {
+            button.addEventListener('click', function() {
+                const terminal = this.closest('.terminal');
+                const terminalId = terminal.id;
+                const bottomTerminalId = terminalId.replace('top', 'bottom');
+                const bottomTerminal = document.getElementById(bottomTerminalId);
+                if (bottomTerminal) {
+                    bottomTerminal.style.display = bottomTerminal.style.display === 'none' ? 'flex' : 'none';
+                }
+            });
+        });
+
         window.addEventListener('resize', () => {
             saveTerminalData();
+            document.querySelectorAll('.cmdBlocks').forEach(cmdBlocks => cmdBlocks.innerHTML = ''); // Clear all cmdBlocks
             restoreTerminalData();
         });
     </script>
