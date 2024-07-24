@@ -75,6 +75,38 @@
     </div>
 
     <script>
+        let terminalData = {};
+
+        function saveTerminalData() {
+            terminalData = {};
+            document.querySelectorAll('.terminal').forEach(terminal => {
+                const terminalId = terminal.id;
+                const cmdBlocks = terminal.querySelectorAll('.cmdBlock .cmdLine pre');
+                terminalData[terminalId] = Array.from(cmdBlocks).map(cmd => cmd.textContent);
+            });
+        }
+
+        function restoreTerminalData() {
+            document.querySelectorAll('.terminal').forEach(terminal => {
+                const terminalId = terminal.id;
+                const cmdBlocksContainer = terminal.querySelector('.cmdBlock');
+                cmdBlocksContainer.innerHTML = '';
+                if (terminalData[terminalId]) {
+                    terminalData[terminalId].forEach(cmdText => {
+                        const newCmdBlock = document.createElement('div');
+                        newCmdBlock.classList.add('cmdBlock');
+                        
+                        const newCmdLine = document.createElement('div');
+                        newCmdLine.classList.add('cmdLine');
+                        newCmdLine.innerHTML = `<pre>${cmdText}</pre>`;
+                        
+                        newCmdBlock.appendChild(newCmdLine);
+                        cmdBlocksContainer.appendChild(newCmdBlock);
+                    });
+                }
+            });
+        }
+
         document.querySelectorAll('.terminal-input').forEach(input => {
             input.addEventListener('keydown', function(event) {
                 if (event.key === 'Enter') {
@@ -98,6 +130,11 @@
                     this.value = '';  // Clear the input
                 }
             });
+        });
+
+        window.addEventListener('resize', () => {
+            saveTerminalData();
+            restoreTerminalData();
         });
     </script>
 </body>
