@@ -12,20 +12,25 @@
             height: 100%;
             display: flex;
             flex-wrap: wrap;
+            background-color: black;
+            color: green;
+            font-family: monospace;
         }
         .terminal {
             width: 50%;
             height: 50%;
             box-sizing: border-box;
-            border: 1px solid #000;
+            border: 1px solid #00FF00;
             overflow: auto;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
+            background-color: black;
+            color: green;
         }
         .modeString {
-            background-color: #333;
-            color: #fff;
+            background-color: #111;
+            color: #00FF00;
             padding: 5px;
         }
         .cmdBlock {
@@ -35,12 +40,15 @@
         }
         .cmdLine {
             white-space: pre-wrap;
+            color: #00FF00;
         }
         .terminal-input {
             width: calc(100% - 10px);
             margin: 5px;
             padding: 5px;
-            border: 1px solid #ccc;
+            border: 1px solid #00FF00;
+            background-color: black;
+            color: #00FF00;
         }
     </style>
 </head>
