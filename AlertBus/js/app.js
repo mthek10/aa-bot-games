@@ -1,10 +1,65 @@
 // Demo citations
 let citations = [
-    { id: "TC-896836", licensePlateImage: 'images/plate1.jpg', violation: 'Speeding', date: '2023-04-15', description: 'Driving 20mph over the speed limit' },
-    { id: "TC-259993", licensePlateImage: 'images/plate2.jpg', violation: 'Parking', date: '2023-04-16', description: 'Parked in a no-parking zone' },
-    { id: "TC-344103", licensePlateImage: 'images/plate3.jpg', violation: 'Red Light', date: '2023-04-17', description: 'Ran a red light at Main St. intersection' },
-    { id: "TC-439157", licensePlateImage: 'images/plate4.jpg', violation: 'Expired Registration', date: '2023-04-18', description: 'Vehicle registration expired 3 months ago' },
-    { id: "TC-705905", licensePlateImage: 'images/plate5.jpg', violation: 'Illegal Turn', date: '2023-04-19', description: 'Made an illegal U-turn at busy intersection' }
+    {
+        id: "TC-896836",
+        licensePlateImage: 'images/plate1.jpg',
+        violation: 'Speeding',
+        date: '2023-04-15',
+        description: 'Driving 20mph over the speed limit',
+        ownerName: 'John Doe',
+        streetAddress: '123 Main St',
+        city: 'Anytown',
+        state: 'CA',
+        zip: '12345'
+    },
+    {
+        id: "TC-259993",
+        licensePlateImage: 'images/plate2.jpg',
+        violation: 'Parking',
+        date: '2023-04-16',
+        description: 'Parked in a no-parking zone',
+        ownerName: 'Jane Smith',
+        streetAddress: '456 Elm St',
+        city: 'Springfield',
+        state: 'IL',
+        zip: '67890'
+    },
+    {
+        id: "TC-344103",
+        licensePlateImage: 'images/plate3.jpg',
+        violation: 'Red Light',
+        date: '2023-04-17',
+        description: 'Ran a red light at Main St. intersection',
+        ownerName: 'Bob Johnson',
+        streetAddress: '789 Oak Ave',
+        city: 'Metropolis',
+        state: 'NY',
+        zip: '54321'
+    },
+    {
+        id: "TC-439157",
+        licensePlateImage: 'images/plate4.jpg',
+        violation: 'Expired Registration',
+        date: '2023-04-18',
+        description: 'Vehicle registration expired 3 months ago',
+        ownerName: 'Alice Brown',
+        streetAddress: '321 Pine Rd',
+        city: 'Smallville',
+        state: 'TX',
+        zip: '98765'
+    },
+    {
+        id: "TC-705905",
+        licensePlateImage: 'images/plate5.jpg',
+        violation: 'Illegal Turn',
+        date: '2023-04-19',
+        description: 'Made an illegal U-turn at busy intersection',
+        ownerName: 'Charlie Wilson',
+        streetAddress: '654 Cedar Ln',
+        city: 'Riverside',
+        state: 'FL',
+        zip: '13579'
+    }
 ];
 
 // DOM elements
@@ -25,9 +80,9 @@ function showCitationList() {
             <thead>
                 <tr>
                     <th>ID</th>
-                    <th>Image</th>
+                    <th>License Plate</th>
                     <th>Date</th>
-                    <th>Action</th>
+                    <th>Status</th>
                 </tr>
             </thead>
             <tbody>
@@ -40,7 +95,10 @@ function showCitationList() {
                 <td><img src="${citation.licensePlateImage}" alt="License Plate" style="width: 100px; height: auto;"></td>
                 <td>${citation.date}</td>
                 <td class="action-buttons">
-                    <button onclick="viewCitation('${citation.id}')" class="view-button">View</button>
+                    ${citation.submittedAt 
+                        ? `<button disabled>Citation Submitted: ${new Date(citation.submittedAt).toLocaleString()}</button>`
+                        : `<button onclick="viewCitation('${citation.id}')" class="view-button">Process Citation</button>`
+                    }
                 </td>
             </tr>
         `;
@@ -197,32 +255,78 @@ function viewCitation(id) {
                 </div>
                 <div class="form-actions">
                     <button type="button" onclick="showCitationList()" class="back-button">Back to List</button>
-                    <button type="submit" class="save-button">Save Changes</button>
+                    <button type="button" onclick="saveCitationChanges()" class="save-button">Save Changes</button>
+                    <button type="button" id="submitCitationButton" class="submit-button" disabled>Submit Citation</button>
                 </div>
             </form>
         </div>
     `;
 
     mainContent.innerHTML = html;
-    document.getElementById('citationForm').addEventListener('submit', saveCitationChanges);
+    document.querySelectorAll('#citationForm input, #citationForm textarea').forEach(input => {
+        input.addEventListener('input', checkAllFieldsFilled);
+    });
+    document.getElementById('submitCitationButton').addEventListener('click', submitCitation);
+    checkAllFieldsFilled();
 }
 
-function saveCitationChanges(e) {
-    e.preventDefault();
+function saveCitationChanges() {
     const id = document.getElementById('citationId').value;
     const index = citations.findIndex(c => c.id === id);
 
     citations[index] = {
         ...citations[index],
+        ownerName: document.getElementById('ownerName').value,
+        streetAddress: document.getElementById('streetAddress').value,
+        city: document.getElementById('city').value,
+        state: document.getElementById('state').value,
+        zip: document.getElementById('zip').value,
         licensePlate: document.getElementById('licensePlate').value,
         makeModel: document.getElementById('makeModel').value,
+        vinNumber: document.getElementById('vinNumber').value,
+        vehicleState: document.getElementById('vehicleState').value,
+        registrationExpiration: document.getElementById('registrationExpiration').value,
+        vehicleWeight: document.getElementById('vehicleWeight').value,
+        violation: document.getElementById('violation').value,
+        date: document.getElementById('date').value,
+        description: document.getElementById('description').value
+    };
+
+    alert('Changes saved successfully!');
+    checkAllFieldsFilled();
+}
+
+function checkAllFieldsFilled() {
+    const inputs = document.querySelectorAll('#citationForm input, #citationForm textarea');
+    const allFilled = Array.from(inputs).every(input => input.value.trim() !== '');
+    document.getElementById('submitCitationButton').disabled = !allFilled;
+}
+
+function submitCitation() {
+    const id = document.getElementById('citationId').value;
+    const index = citations.findIndex(c => c.id === id);
+    const submissionTimestamp = new Date().toISOString();
+
+    citations[index] = {
+        ...citations[index],
+        ownerName: document.getElementById('ownerName').value,
+        streetAddress: document.getElementById('streetAddress').value,
+        city: document.getElementById('city').value,
+        state: document.getElementById('state').value,
+        zip: document.getElementById('zip').value,
+        licensePlate: document.getElementById('licensePlate').value,
+        makeModel: document.getElementById('makeModel').value,
+        vinNumber: document.getElementById('vinNumber').value,
+        vehicleState: document.getElementById('vehicleState').value,
+        registrationExpiration: document.getElementById('registrationExpiration').value,
         vehicleWeight: document.getElementById('vehicleWeight').value,
         violation: document.getElementById('violation').value,
         date: document.getElementById('date').value,
         description: document.getElementById('description').value,
+        submittedAt: submissionTimestamp
     };
 
-    alert('Changes saved successfully!');
+    alert('Citation submitted successfully!');
     showCitationList();
 }
 
