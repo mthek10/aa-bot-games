@@ -177,14 +177,6 @@ function viewCitation(id) {
                         <img src="${citation.licensePlateImage}" alt="License Plate" class="license-plate-image">
                         <p>License Plate Image</p>
                     </div>
-                    <div class="image-box">
-                        <img src="images/placeholder.jpg" alt="Overview" class="overview-image">
-                        <p>No Overview Image Selected</p>
-                    </div>
-                    <div class="image-box">
-                        <img src="images/placeholder.jpg" alt="Rearview" class="rearview-image">
-                        <p>No Rearview Image Selected</p>
-                    </div>
                 </div>
                 <div class="citation-info">
                     <h3>Owner Info</h3>
@@ -254,9 +246,9 @@ function viewCitation(id) {
                     </div>
                 </div>
                 <div class="form-actions">
-                    <button type="button" onclick="showCitationList()" class="back-button">Back to List</button>
-                    <button type="button" onclick="saveCitationChanges()" class="save-button">Save Changes</button>
-                    <button type="button" id="submitCitationButton" class="submit-button" disabled>Submit Citation</button>
+                    <button type="button" onclick="showCitationList()" class="action-button back-button">Back to List</button>
+                    <button type="button" onclick="saveCitationChanges()" class="action-button save-button">Save Changes</button>
+                    <button type="button" id="submitCitationButton" class="action-button submit-button" disabled>Submit Citation</button>
                 </div>
             </form>
         </div>
