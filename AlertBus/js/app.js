@@ -177,7 +177,7 @@ function showNewCitationForm() {
             <label for="transmission">Transmission:</label>
             <input type="text" id="transmission" required>
 
-            <label for="vehicleWeight">Gross Vehicle Weight Rating:</label>
+            <label for="vehicleWeight">Vehicle Weight Rating:</label>
             <select id="vehicleWeight" name="vehicleWeight" required>
                 <option value="">Select a weight class</option>
                 ${weightClasses.map(wc => `<option value="${wc.class}">${wc.class}: ${wc.range}</option>`).join('')}
@@ -299,7 +299,7 @@ function viewCitation(id) {
                             <input type="text" id="transmission" name="transmission" value="${citation.transmission || ''}">
                         </div>
                         <div class="info-item">
-                            <label for="vehicleWeight">Gross Vehicle Weight Rating:</label>
+                            <label for="vehicleWeight">Vehicle Weight Rating:</label>
                             <select id="vehicleWeight" name="vehicleWeight">
                                 ${weightClasses.map(wc => `<option value="${wc.class}" ${citation.vehicleWeight === wc.class ? 'selected' : ''}>${wc.class}: ${wc.range}</option>`).join('')}
                             </select>
