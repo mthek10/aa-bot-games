@@ -2,7 +2,7 @@
 let citations = [
     {
         id: "TC-896836",
-        licensePlateImage: 'images/plate1.jpg',
+        licensePlateImage: 'images/plate1.jpeg',
         violation: 'Speeding',
         date: '2023-04-15',
         description: 'Driving 20mph over the speed limit',
@@ -14,7 +14,7 @@ let citations = [
     },
     {
         id: "TC-259993",
-        licensePlateImage: 'images/plate2.jpg',
+        licensePlateImage: 'images/plate2.jpeg',
         violation: 'Parking',
         date: '2023-04-16',
         description: 'Parked in a no-parking zone',
@@ -26,7 +26,7 @@ let citations = [
     },
     {
         id: "TC-344103",
-        licensePlateImage: 'images/plate3.jpg',
+        licensePlateImage: 'images/plate3.jpeg',
         violation: 'Red Light',
         date: '2023-04-17',
         description: 'Ran a red light at Main St. intersection',
@@ -38,7 +38,7 @@ let citations = [
     },
     {
         id: "TC-439157",
-        licensePlateImage: 'images/plate4.jpg',
+        licensePlateImage: 'images/plate4.jpeg',
         violation: 'Expired Registration',
         date: '2023-04-18',
         description: 'Vehicle registration expired 3 months ago',
@@ -50,7 +50,7 @@ let citations = [
     },
     {
         id: "TC-705905",
-        licensePlateImage: 'images/plate5.jpg',
+        licensePlateImage: 'images/plate5.jpeg',
         violation: 'Illegal Turn',
         date: '2023-04-19',
         description: 'Made an illegal U-turn at busy intersection',
