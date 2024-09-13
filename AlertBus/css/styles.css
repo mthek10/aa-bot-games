@@ -236,6 +236,8 @@ button:hover {
 .image-container {
     display: flex;
     justify-content: center;
+    align-items: center;
+    height: 220px;
     margin-bottom: 20px;
 }
 
@@ -244,8 +246,11 @@ button:hover {
 }
 
 .license-plate-image {
-    max-width: 100%;
+    max-width: 300px;
+    max-height: 200px;
+    width: auto;
     height: auto;
+    object-fit: contain;
     border: 1px solid #ddd;
     border-radius: 4px;
 }
