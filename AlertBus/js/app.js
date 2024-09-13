@@ -70,6 +70,19 @@ const stateAbbreviations = [
     'SD', 'TN', 'TX', 'UT', 'VT', 'VA', 'WA', 'WV', 'WI', 'WY'
 ];
 
+const weightClasses = [
+    { class: "Class 1", range: "6,000 lb (2,722 kg) or less" },
+    { class: "Class 2", range: "6,001–10,000 lb (2,722–4,536 kg)" },
+    { class: "Class 2a", range: "6,001–8,500 lb (2,722–3,856 kg)" },
+    { class: "Class 2b", range: "8,501–10,000 lb (3,856–4,536 kg)" },
+    { class: "Class 3", range: "10,001–14,000 lb (4,536–6,350 kg)" },
+    { class: "Class 4", range: "14,001–16,000 lb (6,350–7,257 kg)" },
+    { class: "Class 5", range: "16,001–19,500 lb (7,258–8,845 kg)" },
+    { class: "Class 6", range: "19,501–26,000 lb (8,846–11,793 kg)" },
+    { class: "Class 7", range: "26,001–33,000 lb (11,794–14,969 kg)" },
+    { class: "Class 8", range: "33,001 lb (14,969 kg) and above" }
+];
+
 // DOM elements
 const mainContent = document.getElementById('mainContent');
 const citationListLink = document.getElementById('citationList');
@@ -164,8 +177,11 @@ function showNewCitationForm() {
             <label for="transmission">Transmission:</label>
             <input type="text" id="transmission" required>
 
-            <label for="vehicleWeight">Vehicle Weight (lbs):</label>
-            <input type="number" id="vehicleWeight" required>
+            <label for="vehicleWeight">Gross Vehicle Weight Rating:</label>
+            <select id="vehicleWeight" name="vehicleWeight" required>
+                <option value="">Select a weight class</option>
+                ${weightClasses.map(wc => `<option value="${wc.class}">${wc.class}: ${wc.range}</option>`).join('')}
+            </select>
 
             <label for="description">Description:</label>
             <textarea id="description" required></textarea>
@@ -283,8 +299,10 @@ function viewCitation(id) {
                             <input type="text" id="transmission" name="transmission" value="${citation.transmission || ''}">
                         </div>
                         <div class="info-item">
-                            <label for="vehicleWeight">Vehicle Weight (lbs):</label>
-                            <input type="number" id="vehicleWeight" name="vehicleWeight" value="${citation.vehicleWeight || ''}">
+                            <label for="vehicleWeight">Gross Vehicle Weight Rating:</label>
+                            <select id="vehicleWeight" name="vehicleWeight">
+                                ${weightClasses.map(wc => `<option value="${wc.class}" ${citation.vehicleWeight === wc.class ? 'selected' : ''}>${wc.class}: ${wc.range}</option>`).join('')}
+                            </select>
                         </div>
                     </div>
                     <div class="citation-details">
@@ -368,15 +386,11 @@ function submitCitation() {
         city: document.getElementById('city').value,
         state: document.getElementById('state').value,
         zip: document.getElementById('zip').value,
-        vin: document.getElementById('vin').value,
-        make: document.getElementById('make').value,
-        model: document.getElementById('model').value,
-        year: document.getElementById('year').value,
-        trim: document.getElementById('trim').value,
-        engine: document.getElementById('engine').value,
-        age: document.getElementById('age').value,
-        manufactureLocation: document.getElementById('manufactureLocation').value,
-        transmission: document.getElementById('transmission').value,
+        licensePlate: document.getElementById('licensePlate').value,
+        makeModel: document.getElementById('makeModel').value,
+        vinNumber: document.getElementById('vinNumber').value,
+        vehicleState: document.getElementById('vehicleState').value,
+        registrationExpiration: document.getElementById('registrationExpiration').value,
         vehicleWeight: document.getElementById('vehicleWeight').value,
         violation: document.getElementById('violation').value,
         date: document.getElementById('date').value,
