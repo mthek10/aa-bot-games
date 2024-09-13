@@ -62,6 +62,14 @@ let citations = [
     }
 ];
 
+const stateAbbreviations = [
+    'AL', 'AK', 'AZ', 'AR', 'CA', 'CO', 'CT', 'DE', 'FL', 'GA',
+    'HI', 'ID', 'IL', 'IN', 'IA', 'KS', 'KY', 'LA', 'ME', 'MD',
+    'MA', 'MI', 'MN', 'MS', 'MO', 'MT', 'NE', 'NV', 'NH', 'NJ',
+    'NM', 'NY', 'NC', 'ND', 'OH', 'OK', 'OR', 'PA', 'RI', 'SC',
+    'SD', 'TN', 'TX', 'UT', 'VT', 'VA', 'WA', 'WV', 'WI', 'WY'
+];
+
 // DOM elements
 const mainContent = document.getElementById('mainContent');
 const citationListLink = document.getElementById('citationList');
@@ -129,8 +137,32 @@ function showNewCitationForm() {
             <label for="date">Date:</label>
             <input type="date" id="date" required>
 
-            <label for="makeModel">Make/Model:</label>
-            <input type="text" id="makeModel" required>
+            <label for="vin">VIN:</label>
+            <input type="text" id="vin" required>
+
+            <label for="make">Make:</label>
+            <input type="text" id="make" required>
+
+            <label for="model">Model:</label>
+            <input type="text" id="model" required>
+
+            <label for="year">Year:</label>
+            <input type="number" id="year" required>
+
+            <label for="trim">Trim:</label>
+            <input type="text" id="trim" required>
+
+            <label for="engine">Engine:</label>
+            <input type="text" id="engine" required>
+
+            <label for="age">Age:</label>
+            <input type="number" id="age" required>
+
+            <label for="manufactureLocation">Manufacture Location:</label>
+            <input type="text" id="manufactureLocation" required>
+
+            <label for="transmission">Transmission:</label>
+            <input type="text" id="transmission" required>
 
             <label for="vehicleWeight">Vehicle Weight (lbs):</label>
             <input type="number" id="vehicleWeight" required>
@@ -157,8 +189,16 @@ function submitNewCitation(e) {
         violation: document.getElementById('violation').value,
         date: document.getElementById('date').value,
         description: document.getElementById('description').value,
-        vehicleWeight: document.getElementById('vehicleWeight').value,
-        makeModel: document.getElementById('makeModel').value
+        vin: document.getElementById('vin').value,
+        make: document.getElementById('make').value,
+        model: document.getElementById('model').value,
+        year: document.getElementById('year').value,
+        trim: document.getElementById('trim').value,
+        engine: document.getElementById('engine').value,
+        age: document.getElementById('age').value,
+        manufactureLocation: document.getElementById('manufactureLocation').value,
+        transmission: document.getElementById('transmission').value,
+        vehicleWeight: document.getElementById('vehicleWeight').value
     };
 
     citations.push(newCitation);
@@ -195,7 +235,9 @@ function viewCitation(id) {
                         </div>
                         <div class="info-item">
                             <label for="state">State:</label>
-                            <input type="text" id="state" name="state" value="${citation.state || ''}">
+                            <select id="state" name="state">
+                                ${stateAbbreviations.map(abbr => `<option value="${abbr}" ${citation.state === abbr ? 'selected' : ''}>${abbr}</option>`).join('')}
+                            </select>
                         </div>
                         <div class="info-item">
                             <label for="zip">ZIP:</label>
@@ -205,24 +247,40 @@ function viewCitation(id) {
                     <h3>Vehicle Info</h3>
                     <div class="info-grid">
                         <div class="info-item">
-                            <label for="makeModel">Make/Model:</label>
-                            <input type="text" id="makeModel" name="makeModel" value="${citation.makeModel || ''}">
+                            <label for="vin">VIN:</label>
+                            <input type="text" id="vin" name="vin" value="${citation.vin || ''}">
                         </div>
                         <div class="info-item">
-                            <label for="licensePlate">License Plate:</label>
-                            <input type="text" id="licensePlate" name="licensePlate" value="${citation.licensePlate || ''}">
+                            <label for="make">Make:</label>
+                            <input type="text" id="make" name="make" value="${citation.make || ''}">
                         </div>
                         <div class="info-item">
-                            <label for="vinNumber">VIN Number:</label>
-                            <input type="text" id="vinNumber" name="vinNumber" value="${citation.vinNumber || ''}">
+                            <label for="model">Model:</label>
+                            <input type="text" id="model" name="model" value="${citation.model || ''}">
                         </div>
                         <div class="info-item">
-                            <label for="vehicleState">State:</label>
-                            <input type="text" id="vehicleState" name="vehicleState" value="${citation.vehicleState || ''}">
+                            <label for="year">Year:</label>
+                            <input type="number" id="year" name="year" value="${citation.year || ''}">
                         </div>
                         <div class="info-item">
-                            <label for="registrationExpiration">Registration Expiration:</label>
-                            <input type="date" id="registrationExpiration" name="registrationExpiration" value="${citation.registrationExpiration || ''}">
+                            <label for="trim">Trim:</label>
+                            <input type="text" id="trim" name="trim" value="${citation.trim || ''}">
+                        </div>
+                        <div class="info-item">
+                            <label for="engine">Engine:</label>
+                            <input type="text" id="engine" name="engine" value="${citation.engine || ''}">
+                        </div>
+                        <div class="info-item">
+                            <label for="age">Age:</label>
+                            <input type="number" id="age" name="age" value="${citation.age || ''}">
+                        </div>
+                        <div class="info-item">
+                            <label for="manufactureLocation">Manufacture Location:</label>
+                            <input type="text" id="manufactureLocation" name="manufactureLocation" value="${citation.manufactureLocation || ''}">
+                        </div>
+                        <div class="info-item">
+                            <label for="transmission">Transmission:</label>
+                            <input type="text" id="transmission" name="transmission" value="${citation.transmission || ''}">
                         </div>
                         <div class="info-item">
                             <label for="vehicleWeight">Vehicle Weight (lbs):</label>
@@ -273,11 +331,15 @@ function saveCitationChanges() {
         city: document.getElementById('city').value,
         state: document.getElementById('state').value,
         zip: document.getElementById('zip').value,
-        licensePlate: document.getElementById('licensePlate').value,
-        makeModel: document.getElementById('makeModel').value,
-        vinNumber: document.getElementById('vinNumber').value,
-        vehicleState: document.getElementById('vehicleState').value,
-        registrationExpiration: document.getElementById('registrationExpiration').value,
+        vin: document.getElementById('vin').value,
+        make: document.getElementById('make').value,
+        model: document.getElementById('model').value,
+        year: document.getElementById('year').value,
+        trim: document.getElementById('trim').value,
+        engine: document.getElementById('engine').value,
+        age: document.getElementById('age').value,
+        manufactureLocation: document.getElementById('manufactureLocation').value,
+        transmission: document.getElementById('transmission').value,
         vehicleWeight: document.getElementById('vehicleWeight').value,
         violation: document.getElementById('violation').value,
         date: document.getElementById('date').value,
@@ -306,11 +368,15 @@ function submitCitation() {
         city: document.getElementById('city').value,
         state: document.getElementById('state').value,
         zip: document.getElementById('zip').value,
-        licensePlate: document.getElementById('licensePlate').value,
-        makeModel: document.getElementById('makeModel').value,
-        vinNumber: document.getElementById('vinNumber').value,
-        vehicleState: document.getElementById('vehicleState').value,
-        registrationExpiration: document.getElementById('registrationExpiration').value,
+        vin: document.getElementById('vin').value,
+        make: document.getElementById('make').value,
+        model: document.getElementById('model').value,
+        year: document.getElementById('year').value,
+        trim: document.getElementById('trim').value,
+        engine: document.getElementById('engine').value,
+        age: document.getElementById('age').value,
+        manufactureLocation: document.getElementById('manufactureLocation').value,
+        transmission: document.getElementById('transmission').value,
         vehicleWeight: document.getElementById('vehicleWeight').value,
         violation: document.getElementById('violation').value,
         date: document.getElementById('date').value,
