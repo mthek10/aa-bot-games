@@ -301,6 +301,7 @@ function viewCitation(id) {
                         <div class="info-item">
                             <label for="vehicleWeight">Vehicle Weight Rating:</label>
                             <select id="vehicleWeight" name="vehicleWeight">
+                                <option value="">Select a weight class</option>
                                 ${weightClasses.map(wc => `<option value="${wc.class}" ${citation.vehicleWeight === wc.class ? 'selected' : ''}>${wc.class}: ${wc.range}</option>`).join('')}
                             </select>
                         </div>
@@ -358,7 +359,7 @@ function saveCitationChanges() {
         age: document.getElementById('age').value,
         manufactureLocation: document.getElementById('manufactureLocation').value,
         transmission: document.getElementById('transmission').value,
-        vehicleWeight: document.getElementById('vehicleWeight').value,
+        vehicleWeight: document.getElementById('vehicleWeight').value || null,
         violation: document.getElementById('violation').value,
         date: document.getElementById('date').value,
         description: document.getElementById('description').value
