@@ -73,8 +73,9 @@ const stateAbbreviations = [
 const weightClasses = [
     { class: "Class 1", range: "6,000 lb (2,722 kg) or less" },
     { class: "Class 2", range: "6,001–10,000 lb (2,722–4,536 kg)" },
-    { class: "Class 2a", range: "6,001–8,500 lb (2,722–3,856 kg)" },
-    { class: "Class 2b", range: "8,501–10,000 lb (3,856–4,536 kg)" },
+    { class: "Class 2a", range: "6,001–7,000 lb (2,722–3,175 kg)" },
+    { class: "Class 2e", range: "7,001–8,500 lb (3,176–3,856 kg)" },
+    { class: "Class 2b", range: "8,501–10,000 lb (3,857–4,536 kg)" },
     { class: "Class 3", range: "10,001–14,000 lb (4,536–6,350 kg)" },
     { class: "Class 4", range: "14,001–16,000 lb (6,350–7,257 kg)" },
     { class: "Class 5", range: "16,001–19,500 lb (7,258–8,845 kg)" },
@@ -169,7 +170,7 @@ function showNewCitationForm() {
             <input type="text" id="engine" required>
 
             <label for="age">Age:</label>
-            <input type="number" id="age" required>
+            <input type="text" id="age" required>
 
             <label for="manufactureLocation">Manufacture Location:</label>
             <input type="text" id="manufactureLocation" required>
@@ -288,7 +289,7 @@ function viewCitation(id) {
                         </div>
                         <div class="info-item">
                             <label for="age">Age:</label>
-                            <input type="number" id="age" name="age" value="${citation.age || ''}">
+                            <input type="text" id="age" name="age" value="${citation.age || ''}">
                         </div>
                         <div class="info-item">
                             <label for="manufactureLocation">Manufacture Location:</label>
