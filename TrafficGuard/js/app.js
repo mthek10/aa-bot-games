@@ -118,7 +118,7 @@ function showCitationList() {
                 <td>${citation.date}</td>
                 <td class="action-buttons">
                     ${citation.submittedAt 
-                        ? `<button disabled>Citation Submitted: ${new Date(citation.submittedAt).toLocaleString()}</button>`
+                        ? `<button disabled title="Citation Submitted: ${new Date(citation.submittedAt).toLocaleString()}">Citation Submitted</button>`
                         : `<button onclick="viewCitation('${citation.id}')" class="view-button">Process Citation</button>`
                     }
                 </td>
@@ -336,7 +336,10 @@ function viewCitation(id) {
     document.querySelectorAll('#citationForm input, #citationForm textarea').forEach(input => {
         input.addEventListener('input', checkAllFieldsFilled);
     });
-    document.getElementById('submitCitationButton').addEventListener('click', submitCitation);
+    document.getElementById('submitCitationButton').addEventListener('click', function(e) {
+        e.preventDefault(); // Prevent form from submitting normally
+        submitCitation();
+    });
     checkAllFieldsFilled();
 }
 
@@ -381,6 +384,11 @@ function submitCitation() {
     const index = citations.findIndex(c => c.id === id);
     const submissionTimestamp = new Date().toISOString();
 
+    if (index === -1) {
+        console.error('Citation not found');
+        return;
+    }
+
     citations[index] = {
         ...citations[index],
         ownerName: document.getElementById('ownerName').value,
@@ -388,11 +396,15 @@ function submitCitation() {
         city: document.getElementById('city').value,
         state: document.getElementById('state').value,
         zip: document.getElementById('zip').value,
-        licensePlate: document.getElementById('licensePlate').value,
-        makeModel: document.getElementById('makeModel').value,
-        vinNumber: document.getElementById('vinNumber').value,
-        vehicleState: document.getElementById('vehicleState').value,
-        registrationExpiration: document.getElementById('registrationExpiration').value,
+        vin: document.getElementById('vin').value,
+        make: document.getElementById('make').value,
+        model: document.getElementById('model').value,
+        year: document.getElementById('year').value,
+        trim: document.getElementById('trim').value,
+        engine: document.getElementById('engine').value,
+        age: document.getElementById('age').value,
+        manufactureLocation: document.getElementById('manufactureLocation').value,
+        transmission: document.getElementById('transmission').value,
         vehicleWeight: document.getElementById('vehicleWeight').value,
         violation: document.getElementById('violation').value,
         date: document.getElementById('date').value,
@@ -401,7 +413,7 @@ function submitCitation() {
     };
 
     alert('Citation submitted successfully!');
-    showCitationList();
+    showCitationList(); // This line ensures we return to the citations page
 }
 
 function setActiveLink(activeLink) {
