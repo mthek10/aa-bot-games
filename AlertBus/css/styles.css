@@ -205,15 +205,19 @@ button:hover {
 
 .action-buttons {
     display: flex;
-    gap: 10px;
+    justify-content: flex-start;
+    width: 100%;
 }
 
 .action-buttons button {
-    flex: 1;
+    flex: 0 0 auto;
+    max-width: 150px;
 }
 
 .view-button {
     background-color: #2c7da0;
+    font-size: 0.9em;
+    padding: 8px 12px;
 }
 
 .edit-button {
