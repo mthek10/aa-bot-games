@@ -93,10 +93,37 @@ const newCitationLink = document.getElementById('newCitation');
 citationListLink.addEventListener('click', showCitationList);
 newCitationLink.addEventListener('click', showNewCitationForm);
 
+// Initial load
+showCitationList();
+
+// Initialize search functionality
+function initializeSearch() {
+    const searchInput = document.getElementById('searchInput');
+    const searchButton = document.getElementById('searchButton');
+    
+    if (searchInput && searchButton) {
+        searchButton.addEventListener('click', searchCitation);
+        searchInput.addEventListener('keyup', function(event) {
+            if (event.key === 'Enter') {
+                searchCitation();
+            }
+        });
+    } else {
+        console.error('Search input or button not found');
+    }
+}
+
+// Call initializeSearch after the content is loaded
+document.addEventListener('DOMContentLoaded', initializeSearch);
+
 // Functions
 function showCitationList() {
     setActiveLink(citationListLink);
     let html = `
+        <div class="search-container">
+            <input type="text" id="searchInput" placeholder="Enter Citation ID">
+            <button id="searchButton">Search</button>
+        </div>
         <h2>Citation List</h2>
         <table>
             <thead>
@@ -119,7 +146,7 @@ function showCitationList() {
                 <td class="action-buttons">
                     ${citation.submittedAt 
                         ? `<button disabled title="Citation Submitted: ${new Date(citation.submittedAt).toLocaleString()}">Citation Submitted</button>`
-                        : `<button onclick="viewCitation('${citation.id}')" class="view-button">Process Citation</button>`
+                        : `<button onclick="viewCitation('${citation.id}', true)" class="view-button">Process Citation</button>`
                     }
                 </td>
             </tr>
@@ -132,6 +159,18 @@ function showCitationList() {
     `;
 
     mainContent.innerHTML = html;
+    
+    // Re-initialize the search input and button
+    const searchInput = document.getElementById('searchInput');
+    const searchButton = document.getElementById('searchButton');
+    searchButton.addEventListener('click', searchCitation);
+    
+    // Add event listener for the Enter key on the search input
+    searchInput.addEventListener('keyup', function(event) {
+        if (event.key === 'Enter') {
+            searchCitation();
+        }
+    });
 }
 
 function showNewCitationForm() {
@@ -222,7 +261,7 @@ function submitNewCitation(e) {
     showCitationList();
 }
 
-function viewCitation(id) {
+function viewCitation(id, editable = true) {
     const citation = citations.find(c => c.id === id);
     const html = `
         <div class="citation-view">
@@ -238,109 +277,92 @@ function viewCitation(id) {
                 <div class="citation-info">
                     <h3>Owner Info</h3>
                     <div class="info-grid">
-                        <div class="info-item">
-                            <label for="ownerName">Name:</label>
-                            <input type="text" id="ownerName" name="ownerName" value="${citation.ownerName || ''}">
-                        </div>
-                        <div class="info-item">
-                            <label for="streetAddress">Street Address:</label>
-                            <input type="text" id="streetAddress" name="streetAddress" value="${citation.streetAddress || ''}">
-                        </div>
-                        <div class="info-item">
-                            <label for="city">City:</label>
-                            <input type="text" id="city" name="city" value="${citation.city || ''}">
-                        </div>
-                        <div class="info-item">
-                            <label for="state">State:</label>
-                            <select id="state" name="state">
-                                ${stateAbbreviations.map(abbr => `<option value="${abbr}" ${citation.state === abbr ? 'selected' : ''}>${abbr}</option>`).join('')}
-                            </select>
-                        </div>
-                        <div class="info-item">
-                            <label for="zip">ZIP:</label>
-                            <input type="text" id="zip" name="zip" value="${citation.zip || ''}">
-                        </div>
+                        ${generateInfoItem('ownerName', 'Name', citation.ownerName, editable)}
+                        ${generateInfoItem('streetAddress', 'Street Address', citation.streetAddress, editable)}
+                        ${generateInfoItem('city', 'City', citation.city, editable)}
+                        ${generateStateSelect('state', 'State', citation.state, editable)}
+                        ${generateInfoItem('zip', 'ZIP', citation.zip, editable)}
                     </div>
                     <h3>Vehicle Info</h3>
                     <div class="info-grid">
-                        <div class="info-item">
-                            <label for="vin">VIN:</label>
-                            <input type="text" id="vin" name="vin" value="${citation.vin || ''}">
-                        </div>
-                        <div class="info-item">
-                            <label for="make">Make:</label>
-                            <input type="text" id="make" name="make" value="${citation.make || ''}">
-                        </div>
-                        <div class="info-item">
-                            <label for="model">Model:</label>
-                            <input type="text" id="model" name="model" value="${citation.model || ''}">
-                        </div>
-                        <div class="info-item">
-                            <label for="year">Year:</label>
-                            <input type="number" id="year" name="year" value="${citation.year || ''}">
-                        </div>
-                        <div class="info-item">
-                            <label for="trim">Trim:</label>
-                            <input type="text" id="trim" name="trim" value="${citation.trim || ''}">
-                        </div>
-                        <div class="info-item">
-                            <label for="engine">Engine:</label>
-                            <input type="text" id="engine" name="engine" value="${citation.engine || ''}">
-                        </div>
-                        <div class="info-item">
-                            <label for="age">Age:</label>
-                            <input type="text" id="age" name="age" value="${citation.age || ''}">
-                        </div>
-                        <div class="info-item">
-                            <label for="manufactureLocation">Manufacture Location:</label>
-                            <input type="text" id="manufactureLocation" name="manufactureLocation" value="${citation.manufactureLocation || ''}">
-                        </div>
-                        <div class="info-item">
-                            <label for="transmission">Transmission:</label>
-                            <input type="text" id="transmission" name="transmission" value="${citation.transmission || ''}">
-                        </div>
-                        <div class="info-item">
-                            <label for="vehicleWeight">Vehicle Weight Rating:</label>
-                            <select id="vehicleWeight" name="vehicleWeight">
-                                <option value="">Select a weight class</option>
-                                ${weightClasses.map(wc => `<option value="${wc.class}" ${citation.vehicleWeight === wc.class ? 'selected' : ''}>${wc.class}: ${wc.range}</option>`).join('')}
-                            </select>
-                        </div>
+                        ${generateInfoItem('vin', 'VIN', citation.vin, editable)}
+                        ${generateInfoItem('make', 'Make', citation.make, editable)}
+                        ${generateInfoItem('model', 'Model', citation.model, editable)}
+                        ${generateInfoItem('year', 'Year', citation.year, editable)}
+                        ${generateInfoItem('trim', 'Trim', citation.trim, editable)}
+                        ${generateInfoItem('engine', 'Engine', citation.engine, editable)}
+                        ${generateInfoItem('age', 'Age', citation.age, editable)}
+                        ${generateInfoItem('manufactureLocation', 'Manufacture Location', citation.manufactureLocation, editable)}
+                        ${generateInfoItem('transmission', 'Transmission', citation.transmission, editable)}
+                        ${generateVehicleWeightSelect('vehicleWeight', 'Vehicle Weight Rating', citation.vehicleWeight, editable)}
                     </div>
                     <div class="citation-details">
                         <h3>Citation Details</h3>
-                        <div class="info-item">
-                            <label for="violation">Violation:</label>
-                            <input type="text" id="violation" name="violation" value="${citation.violation}">
-                        </div>
-                        <div class="info-item">
-                            <label for="date">Date:</label>
-                            <input type="date" id="date" name="date" value="${citation.date}">
-                        </div>
-                        <div class="info-item">
-                            <label for="description">Description:</label>
-                            <textarea id="description" name="description">${citation.description}</textarea>
-                        </div>
+                        ${generateInfoItem('violation', 'Violation', citation.violation, editable)}
+                        ${generateInfoItem('date', 'Date', citation.date, editable, 'date')}
+                        ${generateInfoItem('description', 'Description', citation.description, editable, 'textarea')}
                     </div>
                 </div>
                 <div class="form-actions">
                     <button type="button" onclick="showCitationList()" class="action-button back-button">Back to List</button>
-                    <button type="button" onclick="saveCitationChanges()" class="action-button save-button">Save Changes</button>
-                    <button type="button" id="submitCitationButton" class="action-button submit-button" disabled>Submit Citation</button>
+                    ${editable ? `
+                        <button type="button" onclick="saveCitationChanges()" class="action-button save-button">Save Changes</button>
+                        <button type="button" id="submitCitationButton" class="action-button submit-button" disabled>Submit Citation</button>
+                    ` : ''}
                 </div>
             </form>
         </div>
     `;
 
     mainContent.innerHTML = html;
-    document.querySelectorAll('#citationForm input, #citationForm textarea').forEach(input => {
-        input.addEventListener('input', checkAllFieldsFilled);
-    });
-    document.getElementById('submitCitationButton').addEventListener('click', function(e) {
-        e.preventDefault(); // Prevent form from submitting normally
-        submitCitation();
-    });
-    checkAllFieldsFilled();
+    if (editable) {
+        document.querySelectorAll('#citationForm input, #citationForm textarea').forEach(input => {
+            input.addEventListener('input', checkAllFieldsFilled);
+        });
+        document.getElementById('submitCitationButton').addEventListener('click', function(e) {
+            e.preventDefault();
+            submitCitation();
+        });
+        checkAllFieldsFilled();
+    }
+}
+
+function generateInfoItem(id, label, value, editable, type = 'text') {
+    if (!editable && !value) return '';
+    const inputElement = type === 'textarea' 
+        ? `<textarea id="${id}" name="${id}" ${!editable ? 'disabled' : ''}>${value || ''}</textarea>`
+        : `<input type="${type}" id="${id}" name="${id}" value="${value || ''}" ${!editable ? 'disabled' : ''}>`;
+    return `
+        <div class="info-item">
+            <label for="${id}">${label}:</label>
+            ${inputElement}
+        </div>
+    `;
+}
+
+function generateStateSelect(id, label, value, editable) {
+    if (!editable && !value) return '';
+    return `
+        <div class="info-item">
+            <label for="${id}">${label}:</label>
+            <select id="${id}" name="${id}" ${!editable ? 'disabled' : ''}>
+                ${stateAbbreviations.map(abbr => `<option value="${abbr}" ${value === abbr ? 'selected' : ''}>${abbr}</option>`).join('')}
+            </select>
+        </div>
+    `;
+}
+
+function generateVehicleWeightSelect(id, label, value, editable) {
+    if (!editable && !value) return '';
+    return `
+        <div class="info-item">
+            <label for="${id}">${label}:</label>
+            <select id="${id}" name="${id}" ${!editable ? 'disabled' : ''}>
+                <option value="">Select a weight class</option>
+                ${weightClasses.map(wc => `<option value="${wc.class}" ${value === wc.class ? 'selected' : ''}>${wc.class}: ${wc.range}</option>`).join('')}
+            </select>
+        </div>
+    `;
 }
 
 function saveCitationChanges() {
@@ -421,5 +443,21 @@ function setActiveLink(activeLink) {
     activeLink.classList.add('active');
 }
 
-// Initial load
-showCitationList();
+function searchCitation() {
+    const searchId = searchInput.value.trim().toUpperCase();
+    console.log("Search ID:", searchId); // Debug log
+
+    if (!searchId) {
+        alert('Please enter a Citation ID to search.');
+        return;
+    }
+
+    const citation = citations.find(c => c.id.toUpperCase() === searchId);
+    console.log("Found citation:", citation); // Debug log
+
+    if (citation) {
+        viewCitation(citation.id, false); // Set editable to false
+    } else {
+        alert('Citation not found. Please check the ID and try again.');
+    }
+}
