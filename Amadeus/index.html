@@ -111,8 +111,11 @@
             terminalData = {};
             document.querySelectorAll('.terminal').forEach(terminal => {
                 const terminalId = terminal.id;
-                const cmdBlocks = terminal.querySelectorAll('.cmdBlocks .cmdBlock .cmdLine pre');
-                terminalData[terminalId] = Array.from(cmdBlocks).map(cmd => cmd.textContent);
+                const cmdBlocks = terminal.querySelectorAll('.cmdBlocks .cmdBlock');
+                terminalData[terminalId] = Array.from(cmdBlocks).map(block => ({
+                    command: block.querySelector('.cmdLine pre').textContent,
+                    response: block.querySelector('.cmdResponse').textContent
+                }));
             });
         }
 
@@ -122,16 +125,17 @@
                 const cmdBlocksContainer = terminal.querySelector('.cmdBlocks');
                 cmdBlocksContainer.innerHTML = '';
                 if (terminalData[terminalId]) {
-                    terminalData[terminalId].forEach(cmdText => {
+                    terminalData[terminalId].forEach(cmdData => {
                         const newCmdBlock = document.createElement('div');
                         newCmdBlock.classList.add('cmdBlock');
                         
                         const newCmdLine = document.createElement('div');
                         newCmdLine.classList.add('cmdLine');
-                        newCmdLine.innerHTML = `<pre>${cmdText}</pre>`;
+                        newCmdLine.innerHTML = `<pre>${cmdData.command}</pre>`;
                         
                         const newCmdResponse = document.createElement('div');
                         newCmdResponse.classList.add('cmdResponse');
+                        newCmdResponse.textContent = cmdData.response;
                         
                         newCmdBlock.appendChild(newCmdLine);
                         newCmdBlock.appendChild(newCmdResponse);
