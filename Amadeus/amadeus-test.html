@@ -130,7 +130,12 @@
                         newCmdLine.classList.add('cmdLine');
                         newCmdLine.innerHTML = `<pre>${cmdText}</pre>`;
                         
+                        const newCmdResponse = document.createElement('div');
+                        newCmdResponse.classList.add('cmdResponse');
+                        
                         newCmdBlock.appendChild(newCmdLine);
+                        newCmdBlock.appendChild(newCmdResponse);
+                        
                         cmdBlocksContainer.appendChild(newCmdBlock);
                     });
                 }
@@ -146,13 +151,23 @@
                     const newCmdBlock = document.createElement('div');
                     newCmdBlock.classList.add('cmdBlock');
 
-                    // Create new cmdLine with cmdResponse class added to pre
+                    // Create cmdLine
                     const newCmdLine = document.createElement('div');
                     newCmdLine.classList.add('cmdLine');
-                    newCmdLine.innerHTML = `<pre class="cmdResponse">${this.value}</pre>`;
+                    newCmdLine.innerHTML = `<pre>${this.value}</pre>`;
                     
-                    // Append cmdLine to cmdBlock
+                    // Create cmdResponse
+                    const newCmdResponse = document.createElement('div');
+                    newCmdResponse.classList.add('cmdResponse');
+                    
+                    // Check for TWD command (case-insensitive)
+                    if (this.value.toUpperCase() === 'TWD') {
+                        newCmdResponse.textContent = 'TOTAL $500.25';
+                    }
+                    
+                    // Append both to cmdBlock
                     newCmdBlock.appendChild(newCmdLine);
+                    newCmdBlock.appendChild(newCmdResponse);
 
                     // Append cmdBlock to container
                     cmdBlocksContainer.appendChild(newCmdBlock);
