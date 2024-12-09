@@ -146,10 +146,10 @@
                     const newCmdBlock = document.createElement('div');
                     newCmdBlock.classList.add('cmdBlock');
 
-                    // Create new cmdLine
+                    // Create new cmdLine with cmdResponse class added to pre
                     const newCmdLine = document.createElement('div');
                     newCmdLine.classList.add('cmdLine');
-                    newCmdLine.innerHTML = `<pre>${this.value}</pre>`;
+                    newCmdLine.innerHTML = `<pre class="cmdResponse">${this.value}</pre>`;
                     
                     // Append cmdLine to cmdBlock
                     newCmdBlock.appendChild(newCmdLine);
